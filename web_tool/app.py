@@ -67,18 +67,14 @@ unsafe_allow_html=True,
 )
 
 st.markdown(
-    "Search candidate PRS rankings by selecting target trait ICD-10 endpoints and evaluation dataset."
+    "**Search candidate PRS rankings by selecting evaluation biobank, ancestry, and target trait ICD-10.**"
 )
 
 ### searching section ###
 target_col = "target_icd"
-dataset_col = "eval_dataset"
 rank_col = "rank"
 
-# target trait options and dataset options
-target_icd_options = sorted(df[target_col].dropna().unique())
-dataset_options = sorted(df[dataset_col].dropna().unique())
-
+# Display mapping
 target_display = (
     df[["target_icd", "target_icd_description"]]
     .drop_duplicates()
@@ -86,38 +82,86 @@ target_display = (
     .to_dict()
 )
 
-dataset_display = {
-    "AOU_EUR": "All of Us / European",
-    "AOU_AFR": "All of Us / African",
-    "UKB_EUR": "UK Biobank / European",
+biobank_display = {
+    "AOU": "All of Us",
+    "UKB": "UK Biobank",
 }
 
-col1, col2 = st.columns(2)
+ancestry_display = {
+    "EUR": "European",
+    "AFR": "African",
+}
 
+col1, col2, col3 = st.columns(3)
+
+# select biobank
+biobank_options = sorted(df["eval_biobank"].dropna().unique())
 with col1:
+    biobank = st.selectbox(
+        "Evaluation biobank",
+        options=biobank_options,
+        format_func=lambda x: biobank_display.get(x, x),
+        index=None,
+        placeholder="Select biobank..."
+    )
+
+# select ancestry
+if biobank is not None:
+    ancestry_options = sorted(
+        df.loc[df["eval_biobank"] == biobank, "eval_ancestry"]
+        .dropna()
+        .unique()
+    )
+else:
+    ancestry_options = []
+
+with col2:
+    ancestry = st.selectbox(
+        "Ancestry",
+        options=ancestry_options,
+        format_func=lambda x: ancestry_display.get(x, x),
+        index=None,
+        placeholder="Select ancestry...",
+        disabled=(biobank is None)
+    )
+
+# select target trait
+if biobank is not None and ancestry is not None:
+    target_icd_options = sorted(
+        df.loc[
+            (df["eval_biobank"] == biobank)
+            & (df["eval_ancestry"] == ancestry),
+            target_col,
+        ]
+        .dropna()
+        .unique()
+    )
+else:
+    target_icd_options = []
+
+with col3:
     target_icd = st.selectbox(
         "Target trait ICD-10",
         options=target_icd_options,
         format_func=lambda x: f"{x} ({target_display.get(x, 'Unknown')})",
         index=None,
-        placeholder="Type to search ICD-10 trait..."
-    )
-
-with col2:
-    dataset = st.selectbox(
-        "Evaluation biobank / Ancestry",
-        options=dataset_options,
-        format_func=lambda x: dataset_display.get(x, x),
-        index=None,
-        placeholder="Select evaluation dataset..."
+        placeholder="Type to search ICD-10 trait...",
+        disabled=(biobank is None or ancestry is None)
     )
 
 if st.button("Search"):
-    result = (
-        df[(df[target_col] == target_icd) & (df[dataset_col] == dataset)]
-        .sort_values(rank_col)
-        .reset_index(drop=True)
-    )
+    if target_icd is None or biobank is None or ancestry is None:
+        st.warning("Please select biobank, ancestry, and target trait ICD-10.")
+    else:
+        result = (
+            df[
+                (df["target_icd"] == target_icd)
+                & (df["eval_biobank"] == biobank)
+                & (df["eval_ancestry"] == ancestry)
+            ]
+            .sort_values("rank")
+            .reset_index(drop=True)
+        )
 
     if len(result) > 0:
 
@@ -128,17 +172,11 @@ if st.button("Search"):
 
         target_description = result.loc[0, "target_icd_description"]
         target_chapter = result.loc[0, "target_icd_chapter"]
-        dataset_label = dataset_display.get(dataset, dataset)
-        biobank_name = dataset_label.split(" / ")[0]
+
+        biobank_name = biobank_display.get(biobank, biobank)
+        ancestry_label = ancestry_display.get(ancestry, ancestry)
 
         # generate ancestry label
-        ancestry_label = {
-            "EUR": "European",
-            "AFR": "African",
-            "AMR": "Admixed American",
-            "EAS": "East Asian",
-        }.get(str(dataset).split("_")[-1], str(dataset).split("_")[-1])
-
         st.markdown(
             f"""
         ### `{target_icd}` | {target_description}
@@ -151,7 +189,7 @@ if st.button("Search"):
 
         st.caption(
             "Highlighted rows correspond to PRSs developed for the target trait. "
-            "AUCs are adjusted for age, sex, and genetic principal components (PC1-PC10)."
+            "Validation adjusted AUCs are adjusted for age, sex, and the first 10 genetic principal components (PC1–PC10)."
         )
 
         ### display table ####
@@ -164,12 +202,13 @@ if st.button("Search"):
             "gwas_source",
             "gwas_n_sample",
             "gwas_n_case",
-            "pgs_dowload_link",
+            "pgs_download_link",
         ]
 
         display_df = result[display_cols].copy()
 
         # format values
+        display_df["rank"] = display_df["rank"].astype(str)
         display_df["auc"] = display_df["auc"].map(lambda x: f"{x:.4f}")
         display_df["gwas_n_sample"] = display_df["gwas_n_sample"].map(lambda x: f"{int(x):,}" if pd.notna(x) else "")
         display_df["gwas_n_case"] = display_df["gwas_n_case"].map(lambda x: f"{int(x):,}" if pd.notna(x) else "")
@@ -184,7 +223,7 @@ if st.button("Search"):
             "gwas_source": "GWAS source",
             "gwas_n_sample": "GWAS sample size",
             "gwas_n_case": "GWAS case size",
-            "pgs_dowload_link": "PRS download link",
+            "pgs_download_link": "PRS download link",
         })
 
         highlight_mask = display_df["Candidate trait ICD-10"] == target_icd
@@ -194,8 +233,14 @@ if st.button("Search"):
                 return ["background-color: #fff3cd; font-weight: 600"] * len(row)
             return [""] * len(row)
 
+        styled_df = (
+            display_df.style
+            .apply(highlight_self_trait, axis=1)
+            .set_properties(**{"text-align": "left"})
+        )
+
         st.dataframe(
-            display_df.style.apply(highlight_self_trait, axis=1),
+            styled_df,
             use_container_width=True,
             hide_index=True,
         )
