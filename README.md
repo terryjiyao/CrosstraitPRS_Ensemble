@@ -2,6 +2,11 @@
 
 This repository contains code for constructing, evaluating, and integrating cross-trait polygenic risk scores (PRSs) across multiple diseases, biobanks, and ancestry groups. The framework systematically evaluates the predictive performance of PRSs across target diseases and integrates complementary cross-trait PRSs using ensemble learning approaches.
 
+A web-based interface for interactively exploring the cross-trait PRS rankings is available: 
+
+**[Click to Web-tool](https://crosstraitprs-ensemble-1081501007093.us-east1.run.app/)**
+
+
 The analyses were conducted using data from the [**All of Us Research Program (AoU)**](https://www.researchallofus.org/) and the [**UK Biobank (UKB)**](https://www.ukbiobank.ac.uk/). Individual-level genotype and electronic health record data are available through controlled access via the [All of Us Researcher Workbench](https://www.researchallofus.org/data-tools/workbench/) and the [UKB-RAP](https://www.ukbiobank.ac.uk/use-our-data/research-analysis-platform/), respectively.
 
 PRS models were constructed using genome-wide association study (GWAS) summary statistics from [**FinnGen**](https://www.finngen.fi/en) for European-ancestry analyses and the [**Million Veteran Program (MVP)**](https://www.research.va.gov/mvp/) for African-ancestry analyses. The ICD-10-to-Phecode mappings used to harmonize disease phenotypes are based on resources available through the [PheWAS Catalog](https://phewascatalog.org/).
@@ -51,10 +56,6 @@ CrosstraitPRS_Ensemble/
 ## Cross-Trait PRS Ranking Database
 
 As part of this study, we generated a comprehensive **cross-trait PRS ranking database** that records the predictive performance and ranking of candidate PRSs across target diseases. The complete database is released through the **GitHub Releases** section of this repository.
-
-A web-based interface for interactively exploring the cross-trait PRS rankings is available: 
-
-**[URL to Web-tool](URL_TO_WEB_TOOL)**
 
 The database can be downloaded from the **GitHub Releases** section of this repository:
 
