@@ -7,6 +7,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
+RUN mkdir -p /app/pages/data && \
+    python -c "import urllib.request; urllib.request.urlretrieve('https://github.com/terryjiyao/CrosstraitPRS_Ensemble/releases/download/v0.1-alpha/prs_cross_trait_ranking.parquet', '/app/pages/data/prs_cross_trait_ranking.parquet')"
+
 EXPOSE 8080
 
 CMD streamlit run About.py \

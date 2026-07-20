@@ -12,10 +12,12 @@ st.set_page_config(
 apply_custom_css()
 
 DATA_URL = "https://github.com/terryjiyao/CrosstraitPRS_Ensemble/releases/download/v0.1-alpha/prs_cross_trait_ranking.parquet"
+
 APP_DIR = Path(__file__).parent.resolve()
 DATA_PATH = APP_DIR / "data" / "prs_cross_trait_ranking.parquet"
 
-@st.cache_data
+
+@st.cache_data(show_spinner=False)
 def load_data():
     DATA_PATH.parent.mkdir(parents=True, exist_ok=True)
 
@@ -25,6 +27,7 @@ def load_data():
         DATA_PATH.write_bytes(r.content)
 
     return pd.read_parquet(DATA_PATH)
+
 
 df = load_data()
 
