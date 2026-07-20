@@ -28,8 +28,62 @@ def load_data():
 
     return pd.read_parquet(DATA_PATH)
 
+@st.cache_resource(show_spinner=False)
+def prepare_options(df):
+    biobank_options = sorted(
+        df["eval_biobank"].dropna().unique()
+    )
+
+    ancestry_options = {
+        biobank: sorted(
+            df.loc[
+                df["eval_biobank"] == biobank,
+                "eval_ancestry"
+            ]
+            .dropna()
+            .unique()
+        )
+        for biobank in biobank_options
+    }
+
+    target_options = {
+        (biobank, ancestry): sorted(
+            group["target_icd"]
+            .dropna()
+            .unique()
+        )
+        for (biobank, ancestry), group in df.groupby(
+            ["eval_biobank", "eval_ancestry"]
+        )
+    }
+
+    target_display = (
+        df[
+            ["target_icd", "target_icd_description"]
+        ]
+        .drop_duplicates()
+        .set_index("target_icd")[
+            "target_icd_description"
+        ]
+        .to_dict()
+    )
+
+    return (
+        biobank_options,
+        ancestry_options,
+        target_options,
+        target_display,
+    )
+
 
 df = load_data()
+
+(
+    biobank_options,
+    ancestry_options_dict,
+    target_options_dict,
+    target_display,
+) = prepare_options(df)
 
 ### page heading ###
 st.title("Cross-trait PRS Performance Search Engine")
@@ -81,13 +135,6 @@ target_col = "target_icd"
 rank_col = "rank"
 
 # Display mapping
-target_display = (
-    df[["target_icd", "target_icd_description"]]
-    .drop_duplicates()
-    .set_index("target_icd")["target_icd_description"]
-    .to_dict()
-)
-
 biobank_display = {
     "AOU": "All of Us",
     "UKB": "UK Biobank",
@@ -101,7 +148,6 @@ ancestry_display = {
 col1, col2, col3 = st.columns(3)
 
 # select biobank
-biobank_options = sorted(df["eval_biobank"].dropna().unique())
 with col1:
     biobank = st.selectbox(
         "Evaluation biobank",
@@ -113,10 +159,8 @@ with col1:
 
 # select ancestry
 if biobank is not None:
-    ancestry_options = sorted(
-        df.loc[df["eval_biobank"] == biobank, "eval_ancestry"]
-        .dropna()
-        .unique()
+    ancestry_options = ancestry_options_dict.get(
+        biobank, []
     )
 else:
     ancestry_options = []
@@ -133,14 +177,8 @@ with col2:
 
 # select target trait
 if biobank is not None and ancestry is not None:
-    target_icd_options = sorted(
-        df.loc[
-            (df["eval_biobank"] == biobank)
-            & (df["eval_ancestry"] == ancestry),
-            target_col,
-        ]
-        .dropna()
-        .unique()
+    target_icd_options = target_options_dict.get(
+        (biobank, ancestry), []
     )
 else:
     target_icd_options = []

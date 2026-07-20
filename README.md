@@ -46,9 +46,6 @@ CrosstraitPRS_Ensemble/
 ├── results/       # Summary-level results for analyses and figures
 ├── reference/     # Phenotype mappings and other reference files
 ├── web-tool/      # Source code for the Cross-Trait PRS Ranking Browser
-│   ├── app.py
-│   ├── Dockerfile
-│   └── requirements.txt
 ├── README.md
 └── LICENSE
 ```
