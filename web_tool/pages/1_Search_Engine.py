@@ -2,11 +2,14 @@ import streamlit as st
 import pandas as pd
 import requests
 from pathlib import Path
+from utils import apply_custom_css
 
 st.set_page_config(
     page_title="Cross-trait PRS performance seach engine",
     layout="wide"
 )
+
+apply_custom_css()
 
 DATA_URL = "https://github.com/terryjiyao/CrosstraitPRS_Ensemble/releases/download/v0.1-alpha/prs_cross_trait_ranking.parquet"
 APP_DIR = Path(__file__).parent.resolve()
