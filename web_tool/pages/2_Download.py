@@ -2,7 +2,7 @@ import streamlit as st
 from utils import apply_custom_css
 
 st.set_page_config(
-    page_title="Download | Cross-trait PRS Database",
+    page_title="Download | Cross-disease PRS Database",
     page_icon="🧬",
     layout="wide"
 )
@@ -13,7 +13,7 @@ st.title("Download")
 
 st.markdown(
     """
-We provide the complete cross-trait polygenic risk score (PRS) ranking
+We provide the complete cross-disease polygenic risk score (PRS) ranking
 database generated in this study.
 
 The database contains the systematic evaluation and ranking of candidate
@@ -25,7 +25,7 @@ target disease in a specific evaluation cohort.
 
 st.divider()
 
-st.subheader("Cross-trait PRS Ranking Database")
+st.subheader("Cross-disease PRS Ranking Database")
 
 st.markdown(
     """
@@ -34,7 +34,7 @@ The database includes:
 - Evaluation biobank and ancestry
 - Evaluation sample size and number of cases
 - Target disease ICD-10 code and disease description
-- Candidate PRS trait ICD-10 code and disease description
+- Candidate PRS disease ICD-10 code and disease description
 - Candidate PRS rank
 - Adjusted AUC
 - PRS construction method
@@ -57,7 +57,7 @@ st.subheader("Download complete database")
 
 st.markdown(
     """
-[**Download Cross-trait PRS Ranking Database (Apache Parquet)**](https://github.com/terryjiyao/CrosstraitPRS_Ensemble/releases/download/v0.1-alpha/prs_cross_trait_ranking.parquet)
+[**Download Cross-disease PRS Ranking Database (Apache Parquet)**](https://github.com/terryjiyao/CrosstraitPRS_Ensemble/releases/download/v0.1-alpha/prs_cross_trait_ranking.parquet)
 """
 )
 
@@ -85,7 +85,7 @@ st.markdown(
     """
 For details of the study and recommended citation, please see:
 
-**Zhang J., et al. _Cross-trait Polygenic Risk Score Transferability and
+**Zhang J., et al. _Cross-disease Polygenic Risk Score Transferability and
 Ensemble Risk Prediction._**  
 *Manuscript under review.*
 """

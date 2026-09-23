@@ -18,7 +18,7 @@ apply_custom_css()
 col1, col2 = st.columns([5, 2], vertical_alignment="top")
 
 with col1:
-    st.title("Cross-trait Polygenic Risk Score Database")
+    st.title("Cross-disease Polygenic Risk Score Database")
 
 with col2:
     logo_col1, logo_col2 = st.columns(2)
@@ -33,7 +33,7 @@ with col2:
 st.markdown(
     """
 This site provides public access to summary-level results from our systematic
-evaluation of **cross-trait polygenic risk score (PRS) performance and transferability** across
+evaluation of **cross-disease polygenic risk score (PRS) performance and transferability** across
 diseases, biobanks, and ancestry groups.
 
 We constructed a comprehensive PRS library from publicly available 
@@ -45,17 +45,17 @@ We then systematically evaluated the predictive performance of these PRSs across
 Researchers can use this resource to:
 
 - Explore and rank candidate PRSs for individual target diseases.
-- Compare cross-trait PRS performance across biobanks and ancestries.
+- Compare cross-disease PRS performance across biobanks and ancestries.
 - Identify potentially informative PRSs developed for genetically or
-  phenotypically related traits.
+  phenotypically related diseases.
 - Access metadata and download links for individual PRS models.
-- Download the complete cross-trait PRS ranking database for downstream
-  analyses and development of multi-trait PRS ensemble models.
+- Download the complete cross-disease PRS ranking database for downstream
+  analyses and development of multi-disease PRS ensemble models.
 
 Use the **Search Engine** page to interactively explore PRS rankings by
 evaluation biobank, ancestry, and target disease.
 
-Use the **Download** page to access the complete cross-trait PRS ranking
+Use the **Download** page to access the complete cross-disease PRS ranking
 database and associated resources.
 """
 )
@@ -68,7 +68,7 @@ st.markdown(
     """
 For details of the study, please see:
 
-**Zhang J., et al. _Cross-trait Polygenic Risk Score Transferability and
+**Zhang J., et al. _Cross-disease Polygenic Risk Score Transferability and
 Ensemble Risk Prediction._**  
 *Manuscript under review.*
 
@@ -120,9 +120,14 @@ st.subheader("Update Log")
 
 st.markdown(
     """
+**September 2026**
+- Initial release of the cross-disease ensemble PRS database.
+- Added interactive cross-disease ensemble PRS search.
+- Updated about and download page, modified layout for search engine page.
+
 **July 2026**
-- Initial release of the Cross-trait PRS Database.
+- Initial release of the cross-disease PRS database.
 - Added interactive PRS ranking search across biobanks and ancestries.
-- Released the complete cross-trait PRS ranking database.
+- Released the complete cross-disease PRS ranking database.
 """
 )

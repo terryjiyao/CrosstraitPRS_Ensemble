@@ -5,7 +5,7 @@ from pathlib import Path
 from utils import apply_custom_css
 
 st.set_page_config(
-    page_title="Cross-trait PRS performance seach engine",
+    page_title="Cross-disease PRS performance seach engine",
     layout="wide"
 )
 
@@ -13,7 +13,7 @@ apply_custom_css()
 
 APP_DIR = Path(__file__).parent.resolve()
 DATA_DIR = APP_DIR.parent / "data"                                  # web_tool/data, shared by all pages
-RANKING_PATH = DATA_DIR / "prs_cross_trait_ranking.parquet"
+RANKING_PATH = DATA_DIR / "prs_cross_disease_ranking.parquet"
 ENSEMBLE_PATH = DATA_DIR / "prs_ensemble_performance.parquet"
 
 
@@ -74,7 +74,7 @@ df, ensemble_df = load_data()
 ) = prepare_options(df)
 
 ### page heading ###
-st.title("Cross-trait PRS Performance Search Engine")
+st.title("Cross-disease PRS Performance Search Engine")
 
 st.markdown(
 """
@@ -101,7 +101,7 @@ Perelman School of Medicine, University of Pennsylvania.
 <p style="margin:0 0 8px 0;">
 <b>Please cite:</b>
 Zhang J., <i>et al.</i>
-<i>Cross-trait Polygenic Risk Score Transferability</i> (under review).
+<i>Cross-disease Polygenic Risk Score Transferability</i> (under review).
 </p>
 
 <p style="margin:0;">
@@ -115,7 +115,7 @@ unsafe_allow_html=True,
 )
 
 st.markdown(
-    "**Search candidate PRS rankings by selecting evaluation biobank, ancestry, and target trait ICD-10.**"
+    "**Search candidate PRS rankings by selecting evaluation biobank, ancestry, and target disease ICD-10.**"
 )
 
 ### searching section ###
@@ -173,17 +173,17 @@ else:
 
 with col3:
     target_icd = st.selectbox(
-        "Target trait ICD-10",
+        "Target disease ICD-10",
         options=target_icd_options,
         format_func=lambda x: f"{x} ({target_display.get(x, 'Unknown')})",
         index=None,
-        placeholder="Type to search ICD-10 trait...",
+        placeholder="Type to search ICD-10 disease...",
         disabled=(biobank is None or ancestry is None)
     )
 
 if st.button("Search"):
     if target_icd is None or biobank is None or ancestry is None:
-        st.warning("Please select biobank, ancestry, and target trait ICD-10.")
+        st.warning("Please select biobank, ancestry, and target disease ICD-10.")
     else:
         try:
             result = df.loc[(biobank, ancestry, target_icd)].reset_index()
@@ -194,7 +194,6 @@ if st.button("Search"):
             st.warning("No evaluation records found.")
         else:
             ### Display compact header ####
-            n_samples = int(result.loc[0, "eval_n_sample"])
             n_samples = int(result.loc[0, "eval_n_sample"])
             n_cases = int(result.loc[0, "eval_n_case"])
             n_candidate_traits = result["candidate_icd"].nunique()
@@ -212,12 +211,12 @@ if st.button("Search"):
 
             **Disease chapter:** {target_chapter}
 
-            **Evaluation biobank:** {biobank_name} | **Ancestry:** {ancestry_label} | **Sample size:** {n_samples:,} | **Cases:** {n_cases:,} | **Candidate traits:** {n_candidate_traits:,} | **Candidate PRSs:** {len(result):,}
+            **Evaluation biobank:** {biobank_name} | **Ancestry:** {ancestry_label} | **Sample size:** {n_samples:,} | **Cases:** {n_cases:,} | **Candidate diseases:** {n_candidate_traits:,} | **Candidate PRSs:** {len(result):,}
             """
             )
 
             st.caption(
-                "Highlighted rows correspond to PRSs developed for the target trait. "
+                "Highlighted rows correspond to PRSs developed for the target disease. "
                 "Validation adjusted AUCs are adjusted for age, sex, and the first 10 genetic principal components (PC1–PC10)."
             )
 
@@ -236,14 +235,14 @@ if st.button("Search"):
                 ens_panel = pd.DataFrame({
                     "Method": ens["ensemble_method"],
                     "AUC (in-sample, AoU)": ens["insample_ensemble_auc"],
-                    "Delta (in-sample)": ens["insample_delta_vs_single"],
+                    "Delta (in-sample, ensemble - best single)": ens["insample_delta_vs_single"],
                     "AUC (out-of-sample, UKB)": ens["outsample_ensemble_auc"],
-                    "Delta (out-of-sample)": ens["outsample_delta_vs_single"],
+                    "Delta (out-of-sample, ensemble - best single)": ens["outsample_delta_vs_single"],
                 })
 
                 # prepend the single-PRS baseline so the gain is readable in place
                 ens_baseline = pd.DataFrame([{
-                    "Method": "Best single cross-trait PRS",
+                    "Method": "Best single candidate PRS",
                     "AUC (in-sample, AoU)": ens.loc[0, "insample_bestsingle_auc"],
                     "Delta (in-sample)": pd.NA,
                     "AUC (out-of-sample, UKB)": ens.loc[0, "outsample_bestsingle_auc"],
@@ -258,7 +257,7 @@ if st.button("Search"):
                     ens_panel[c] = ens_panel[c].map(lambda x: f"{x:+.4f}" if pd.notna(x) else "—")
 
                 # highlight the baseline row to separate it from the ensemble methods
-                ens_baseline_mask = ens_panel["Method"] == "Best single cross-trait PRS"
+                ens_baseline_mask = ens_panel["Method"] == "Best single candidate PRS"
 
                 def highlight_ens_baseline(row):
                     if ens_baseline_mask.loc[row.name]:
@@ -274,13 +273,13 @@ if st.button("Search"):
                 st.dataframe(styled_ens, use_container_width=True, hide_index=True)
 
                 st.caption(
-                    "Ensemble PRSs combine the top 10 candidate cross-trait PRSs for the target trait. "
+                    "Ensemble PRSs combine the top 10 candidate cross-disease PRSs for the target disease. "
                     "In-sample evaluation in All of Us (N = 70,000); out-of-sample evaluation in UK Biobank (N = 224,301). "
-                    "Delta is the AUC difference against the best single cross-trait PRS in the same evaluation. "
-                    "Available for European ancestry and for traits evaluated in both biobanks."
+                    "Delta is the AUC difference against the best single cross-disease PRS in the same evaluation. "
+                    "Available for European ancestry and for diseases evaluated in both biobanks."
                 )
 
-                st.markdown("#### Candidate single PRS ranking")
+                st.markdown("#### Single candidate PRS ranking")
 
             ### display table ####
             display_cols = [
@@ -303,12 +302,15 @@ if st.button("Search"):
             display_df["gwas_n_sample"] = display_df["gwas_n_sample"].map(lambda x: f"{int(x):,}" if pd.notna(x) else "")
             display_df["gwas_n_case"] = display_df["gwas_n_case"].map(lambda x: f"{int(x):,}" if pd.notna(x) else "")
 
+            # display the C+T method with its conventional name
+            display_df["method"] = display_df["method"].astype(str).replace({"C_T": "C+T"})
+
             # rename columns for display
             display_df = display_df.rename(columns={
                 "rank": "Rank",
                 "auc": "AUC",
-                "candidate_icd": "Candidate trait ICD-10",
-                "candidate_icd_description": "Candidate trait ontology",
+                "candidate_icd": "Candidate disease ICD-10",
+                "candidate_icd_description": "Candidate disease ontology",
                 "method": "PRS method",
                 "gwas_source": "GWAS source",
                 "gwas_n_sample": "GWAS sample size",
@@ -316,7 +318,7 @@ if st.button("Search"):
                 "pgs_download_link": "PRS download link",
             })
 
-            highlight_mask = display_df["Candidate trait ICD-10"] == target_icd
+            highlight_mask = display_df["Candidate disease ICD-10"] == target_icd
 
             def highlight_self_trait(row):
                 if highlight_mask.loc[row.name]:
