@@ -244,16 +244,17 @@ if st.button("Search"):
                 ens_baseline = pd.DataFrame([{
                     "Method": "Best single candidate PRS",
                     "AUC (in-sample, AoU)": ens.loc[0, "insample_bestsingle_auc"],
-                    "Delta (in-sample)": pd.NA,
+                    "Delta (in-sample, ensemble - best single)": pd.NA,
                     "AUC (out-of-sample, UKB)": ens.loc[0, "outsample_bestsingle_auc"],
-                    "Delta (out-of-sample)": pd.NA,
+                    "Delta (out-of-sample, ensemble - best single)": pd.NA,
                 }])
                 ens_panel = pd.concat([ens_baseline, ens_panel], ignore_index=True)
 
                 # format AUCs to 4 decimals and deltas with an explicit sign
                 for c in ["AUC (in-sample, AoU)", "AUC (out-of-sample, UKB)"]:
                     ens_panel[c] = ens_panel[c].map(lambda x: f"{x:.4f}" if pd.notna(x) else "")
-                for c in ["Delta (in-sample)", "Delta (out-of-sample)"]:
+                for c in ["Delta (in-sample, ensemble - best single)",
+                          "Delta (out-of-sample, ensemble - best single)"]:
                     ens_panel[c] = ens_panel[c].map(lambda x: f"{x:+.4f}" if pd.notna(x) else "—")
 
                 # highlight the baseline row to separate it from the ensemble methods
