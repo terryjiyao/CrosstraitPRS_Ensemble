@@ -11,22 +11,16 @@ st.set_page_config(
 
 apply_custom_css()
 
-DATA_URL = "https://github.com/terryjiyao/CrosstraitPRS_Ensemble/releases/download/v0.1-alpha/prs_cross_trait_ranking.parquet"
-
 APP_DIR = Path(__file__).parent.resolve()
-DATA_PATH = APP_DIR / "data" / "prs_cross_trait_ranking.parquet"
+DATA_DIR = APP_DIR.parent / "data"                                  # web_tool/data, shared by all pages
+RANKING_PATH = DATA_DIR / "prs_cross_trait_ranking.parquet"
+ENSEMBLE_PATH = DATA_DIR / "prs_ensemble_performance.parquet"
 
 
 @st.cache_data(show_spinner=False)
 def load_data():
-    DATA_PATH.parent.mkdir(parents=True, exist_ok=True)
-
-    if not DATA_PATH.exists():
-        r = requests.get(DATA_URL)
-        r.raise_for_status()
-        DATA_PATH.write_bytes(r.content)
-
-    return pd.read_parquet(DATA_PATH)
+    # both tables ship with the repo, no download needed
+    return pd.read_parquet(RANKING_PATH), pd.read_parquet(ENSEMBLE_PATH)
 
 @st.cache_resource(show_spinner=False)
 def prepare_options(df):
@@ -76,7 +70,7 @@ def prepare_options(df):
     )
 
 
-df = load_data()
+df, ensemble_df = load_data()
 
 (
     biobank_options,
@@ -235,6 +229,65 @@ if st.button("Search"):
             "Highlighted rows correspond to PRSs developed for the target trait. "
             "Validation adjusted AUCs are adjusted for age, sex, and the first 10 genetic principal components (PC1–PC10)."
         )
+
+        ### ensemble PRS panel ###
+        # the ensemble table is EUR-only, one row per (target trait, ensemble method),
+        # with AoU as in-sample and UKB as out-of-sample evaluation
+        ens = ensemble_df[ensemble_df["target_icd"] == target_icd].copy()
+
+        if ancestry == "EUR" and len(ens) > 0:
+            st.markdown("#### Ensemble PRS performance")
+
+            ens = ens.sort_values("insample_ensemble_auc", ascending=False).reset_index(drop=True)
+
+            ens_panel = pd.DataFrame({
+                "Method": ens["ensemble_method"],
+                "AUC (in-sample, AoU)": ens["insample_ensemble_auc"],
+                "Delta (in-sample)": ens["insample_delta_vs_single"],
+                "AUC (out-of-sample, UKB)": ens["outsample_ensemble_auc"],
+                "Delta (out-of-sample)": ens["outsample_delta_vs_single"],
+            })
+
+            # prepend the single-PRS baseline so the gain is readable in place
+            ens_baseline = pd.DataFrame([{
+                "Method": "Best single cross-trait PRS",
+                "AUC (in-sample, AoU)": ens.loc[0, "insample_bestsingle_auc"],
+                "Delta (in-sample)": pd.NA,
+                "AUC (out-of-sample, UKB)": ens.loc[0, "outsample_bestsingle_auc"],
+                "Delta (out-of-sample)": pd.NA,
+            }])
+            ens_panel = pd.concat([ens_baseline, ens_panel], ignore_index=True)
+
+            # format AUCs to 4 decimals and deltas with an explicit sign
+            for c in ["AUC (in-sample, AoU)", "AUC (out-of-sample, UKB)"]:
+                ens_panel[c] = ens_panel[c].map(lambda x: f"{x:.4f}" if pd.notna(x) else "")
+            for c in ["Delta (in-sample)", "Delta (out-of-sample)"]:
+                ens_panel[c] = ens_panel[c].map(lambda x: f"{x:+.4f}" if pd.notna(x) else "—")
+
+            # highlight the baseline row to separate it from the ensemble methods
+            ens_baseline_mask = ens_panel["Method"] == "Best single cross-trait PRS"
+
+            def highlight_ens_baseline(row):
+                if ens_baseline_mask.loc[row.name]:
+                    return ["background-color: #f1f3f5; font-style: italic"] * len(row)
+                return [""] * len(row)
+
+            styled_ens = (
+                ens_panel.style
+                .apply(highlight_ens_baseline, axis=1)
+                .set_properties(**{"text-align": "left"})
+            )
+
+            st.dataframe(styled_ens, use_container_width=True, hide_index=True)
+
+            st.caption(
+                "Ensemble PRSs combine the top 10 candidate cross-trait PRSs for the target trait. "
+                "In-sample evaluation in All of Us (N = 70,000); out-of-sample evaluation in UK Biobank (N = 224,301). "
+                "Delta is the AUC difference against the best single cross-trait PRS in the same evaluation. "
+                "Available for European ancestry and for traits evaluated in both biobanks."
+            )
+
+            st.markdown("#### Candidate single PRS ranking")
 
         ### display table ####
         display_cols = [
