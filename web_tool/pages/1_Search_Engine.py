@@ -17,58 +17,52 @@ RANKING_PATH = DATA_DIR / "prs_cross_trait_ranking.parquet"
 ENSEMBLE_PATH = DATA_DIR / "prs_ensemble_performance.parquet"
 
 
-@st.cache_data(show_spinner=False)
+@st.cache_resource(show_spinner=False)
 def load_data():
-    # both tables ship with the repo, no download needed
-    return pd.read_parquet(RANKING_PATH), pd.read_parquet(ENSEMBLE_PATH)
+    # cache_resource returns the same object instead of a copy on every rerun
+    ranking = pd.read_parquet(RANKING_PATH)
+    ensemble = pd.read_parquet(ENSEMBLE_PATH)
+
+    # low-cardinality string columns as category: smaller memory and much faster filtering
+    for c in ["eval_biobank", "eval_ancestry", "target_icd", "candidate_icd",
+              "method", "gwas_source", "target_icd_chapter"]:
+        if c in ranking.columns:
+            ranking[c] = ranking[c].astype("category")
+
+    # sort once and index by the three search keys so lookups are O(log n) slices
+    ranking = ranking.sort_values(["eval_biobank", "eval_ancestry", "target_icd", "rank"])
+    ranking = ranking.set_index(["eval_biobank", "eval_ancestry", "target_icd"])
+
+    ensemble = ensemble.set_index("target_icd")
+
+    return ranking, ensemble
 
 @st.cache_resource(show_spinner=False)
-def prepare_options(df):
-    biobank_options = sorted(
-        df["eval_biobank"].dropna().unique()
-    )
+def prepare_options(_df):
+    # leading underscore tells Streamlit to skip hashing this argument
+    keys = _df.index.to_frame(index=False).drop_duplicates()
+
+    biobank_options = sorted(keys["eval_biobank"].unique())
 
     ancestry_options = {
-        biobank: sorted(
-            df.loc[
-                df["eval_biobank"] == biobank,
-                "eval_ancestry"
-            ]
-            .dropna()
-            .unique()
-        )
-        for biobank in biobank_options
+        b: sorted(keys.loc[keys["eval_biobank"] == b, "eval_ancestry"].unique())
+        for b in biobank_options
     }
 
     target_options = {
-        (biobank, ancestry): sorted(
-            group["target_icd"]
-            .dropna()
-            .unique()
-        )
-        for (biobank, ancestry), group in df.groupby(
-            ["eval_biobank", "eval_ancestry"]
-        )
+        (b, a): sorted(g["target_icd"].unique())
+        for (b, a), g in keys.groupby(["eval_biobank", "eval_ancestry"], observed=True)
     }
 
     target_display = (
-        df[
-            ["target_icd", "target_icd_description"]
-        ]
+        _df[["target_icd_description"]]
+        .reset_index()[["target_icd", "target_icd_description"]]
         .drop_duplicates()
-        .set_index("target_icd")[
-            "target_icd_description"
-        ]
+        .set_index("target_icd")["target_icd_description"]
         .to_dict()
     )
 
-    return (
-        biobank_options,
-        ancestry_options,
-        target_options,
-        target_display,
-    )
-
+    return biobank_options, ancestry_options, target_options, target_display
 
 df, ensemble_df = load_data()
 
@@ -191,156 +185,152 @@ if st.button("Search"):
     if target_icd is None or biobank is None or ancestry is None:
         st.warning("Please select biobank, ancestry, and target trait ICD-10.")
     else:
-        result = (
-            df[
-                (df["target_icd"] == target_icd)
-                & (df["eval_biobank"] == biobank)
-                & (df["eval_ancestry"] == ancestry)
+        try:
+            result = df.loc[(biobank, ancestry, target_icd)].reset_index()
+        except KeyError:
+            result = pd.DataFrame()
+
+        if len(result) == 0:
+            st.warning("No evaluation records found.")
+        else:
+            ### Display compact header ####
+            n_samples = int(result.loc[0, "eval_n_sample"])
+            n_samples = int(result.loc[0, "eval_n_sample"])
+            n_cases = int(result.loc[0, "eval_n_case"])
+            n_candidate_traits = result["candidate_icd"].nunique()
+
+            target_description = result.loc[0, "target_icd_description"]
+            target_chapter = result.loc[0, "target_icd_chapter"]
+
+            biobank_name = biobank_display.get(biobank, biobank)
+            ancestry_label = ancestry_display.get(ancestry, ancestry)
+
+            # generate ancestry label
+            st.markdown(
+                f"""
+            ### `{target_icd}` | {target_description}
+
+            **Disease chapter:** {target_chapter}
+
+            **Evaluation biobank:** {biobank_name} | **Ancestry:** {ancestry_label} | **Sample size:** {n_samples:,} | **Cases:** {n_cases:,} | **Candidate traits:** {n_candidate_traits:,} | **Candidate PRSs:** {len(result):,}
+            """
+            )
+
+            st.caption(
+                "Highlighted rows correspond to PRSs developed for the target trait. "
+                "Validation adjusted AUCs are adjusted for age, sex, and the first 10 genetic principal components (PC1–PC10)."
+            )
+
+            ### ensemble PRS panel ###
+            # target_icd is the index of the ensemble table, not a column
+            if target_icd in ensemble_df.index:
+                ens = ensemble_df.loc[[target_icd]].reset_index()
+            else:
+                ens = pd.DataFrame()
+
+            if ancestry == "EUR" and len(ens) > 0:
+                st.markdown("#### Ensemble PRS performance")
+
+                ens = ens.sort_values("insample_ensemble_auc", ascending=False).reset_index(drop=True)
+
+                ens_panel = pd.DataFrame({
+                    "Method": ens["ensemble_method"],
+                    "AUC (in-sample, AoU)": ens["insample_ensemble_auc"],
+                    "Delta (in-sample)": ens["insample_delta_vs_single"],
+                    "AUC (out-of-sample, UKB)": ens["outsample_ensemble_auc"],
+                    "Delta (out-of-sample)": ens["outsample_delta_vs_single"],
+                })
+
+                # prepend the single-PRS baseline so the gain is readable in place
+                ens_baseline = pd.DataFrame([{
+                    "Method": "Best single cross-trait PRS",
+                    "AUC (in-sample, AoU)": ens.loc[0, "insample_bestsingle_auc"],
+                    "Delta (in-sample)": pd.NA,
+                    "AUC (out-of-sample, UKB)": ens.loc[0, "outsample_bestsingle_auc"],
+                    "Delta (out-of-sample)": pd.NA,
+                }])
+                ens_panel = pd.concat([ens_baseline, ens_panel], ignore_index=True)
+
+                # format AUCs to 4 decimals and deltas with an explicit sign
+                for c in ["AUC (in-sample, AoU)", "AUC (out-of-sample, UKB)"]:
+                    ens_panel[c] = ens_panel[c].map(lambda x: f"{x:.4f}" if pd.notna(x) else "")
+                for c in ["Delta (in-sample)", "Delta (out-of-sample)"]:
+                    ens_panel[c] = ens_panel[c].map(lambda x: f"{x:+.4f}" if pd.notna(x) else "—")
+
+                # highlight the baseline row to separate it from the ensemble methods
+                ens_baseline_mask = ens_panel["Method"] == "Best single cross-trait PRS"
+
+                def highlight_ens_baseline(row):
+                    if ens_baseline_mask.loc[row.name]:
+                        return ["background-color: #f1f3f5; font-style: italic"] * len(row)
+                    return [""] * len(row)
+
+                styled_ens = (
+                    ens_panel.style
+                    .apply(highlight_ens_baseline, axis=1)
+                    .set_properties(**{"text-align": "left"})
+                )
+
+                st.dataframe(styled_ens, use_container_width=True, hide_index=True)
+
+                st.caption(
+                    "Ensemble PRSs combine the top 10 candidate cross-trait PRSs for the target trait. "
+                    "In-sample evaluation in All of Us (N = 70,000); out-of-sample evaluation in UK Biobank (N = 224,301). "
+                    "Delta is the AUC difference against the best single cross-trait PRS in the same evaluation. "
+                    "Available for European ancestry and for traits evaluated in both biobanks."
+                )
+
+                st.markdown("#### Candidate single PRS ranking")
+
+            ### display table ####
+            display_cols = [
+                "rank",
+                "auc",
+                "candidate_icd",
+                "candidate_icd_description",
+                "method",
+                "gwas_source",
+                "gwas_n_sample",
+                "gwas_n_case",
+                "pgs_download_link",
             ]
-            .sort_values("rank")
-            .reset_index(drop=True)
-        )
 
-    if len(result) > 0:
+            display_df = result[display_cols].copy()
 
-        ### Display compact header ####
-        n_samples = int(result.loc[0, "eval_n_sample"])
-        n_cases = int(result.loc[0, "eval_n_case"])
-        n_candidate_traits = result["candidate_icd"].nunique()
+            # format values
+            display_df["rank"] = display_df["rank"].astype(str)
+            display_df["auc"] = display_df["auc"].map(lambda x: f"{x:.4f}")
+            display_df["gwas_n_sample"] = display_df["gwas_n_sample"].map(lambda x: f"{int(x):,}" if pd.notna(x) else "")
+            display_df["gwas_n_case"] = display_df["gwas_n_case"].map(lambda x: f"{int(x):,}" if pd.notna(x) else "")
 
-        target_description = result.loc[0, "target_icd_description"]
-        target_chapter = result.loc[0, "target_icd_chapter"]
-
-        biobank_name = biobank_display.get(biobank, biobank)
-        ancestry_label = ancestry_display.get(ancestry, ancestry)
-
-        # generate ancestry label
-        st.markdown(
-            f"""
-        ### `{target_icd}` | {target_description}
-
-        **Disease chapter:** {target_chapter}
-
-        **Evaluation biobank:** {biobank_name} | **Ancestry:** {ancestry_label} | **Sample size:** {n_samples:,} | **Cases:** {n_cases:,} | **Candidate traits:** {n_candidate_traits:,} | **Candidate PRSs:** {len(result):,}
-        """
-        )
-
-        st.caption(
-            "Highlighted rows correspond to PRSs developed for the target trait. "
-            "Validation adjusted AUCs are adjusted for age, sex, and the first 10 genetic principal components (PC1–PC10)."
-        )
-
-        ### ensemble PRS panel ###
-        # the ensemble table is EUR-only, one row per (target trait, ensemble method),
-        # with AoU as in-sample and UKB as out-of-sample evaluation
-        ens = ensemble_df[ensemble_df["target_icd"] == target_icd].copy()
-
-        if ancestry == "EUR" and len(ens) > 0:
-            st.markdown("#### Ensemble PRS performance")
-
-            ens = ens.sort_values("insample_ensemble_auc", ascending=False).reset_index(drop=True)
-
-            ens_panel = pd.DataFrame({
-                "Method": ens["ensemble_method"],
-                "AUC (in-sample, AoU)": ens["insample_ensemble_auc"],
-                "Delta (in-sample)": ens["insample_delta_vs_single"],
-                "AUC (out-of-sample, UKB)": ens["outsample_ensemble_auc"],
-                "Delta (out-of-sample)": ens["outsample_delta_vs_single"],
+            # rename columns for display
+            display_df = display_df.rename(columns={
+                "rank": "Rank",
+                "auc": "AUC",
+                "candidate_icd": "Candidate trait ICD-10",
+                "candidate_icd_description": "Candidate trait ontology",
+                "method": "PRS method",
+                "gwas_source": "GWAS source",
+                "gwas_n_sample": "GWAS sample size",
+                "gwas_n_case": "GWAS case size",
+                "pgs_download_link": "PRS download link",
             })
 
-            # prepend the single-PRS baseline so the gain is readable in place
-            ens_baseline = pd.DataFrame([{
-                "Method": "Best single cross-trait PRS",
-                "AUC (in-sample, AoU)": ens.loc[0, "insample_bestsingle_auc"],
-                "Delta (in-sample)": pd.NA,
-                "AUC (out-of-sample, UKB)": ens.loc[0, "outsample_bestsingle_auc"],
-                "Delta (out-of-sample)": pd.NA,
-            }])
-            ens_panel = pd.concat([ens_baseline, ens_panel], ignore_index=True)
+            highlight_mask = display_df["Candidate trait ICD-10"] == target_icd
 
-            # format AUCs to 4 decimals and deltas with an explicit sign
-            for c in ["AUC (in-sample, AoU)", "AUC (out-of-sample, UKB)"]:
-                ens_panel[c] = ens_panel[c].map(lambda x: f"{x:.4f}" if pd.notna(x) else "")
-            for c in ["Delta (in-sample)", "Delta (out-of-sample)"]:
-                ens_panel[c] = ens_panel[c].map(lambda x: f"{x:+.4f}" if pd.notna(x) else "—")
-
-            # highlight the baseline row to separate it from the ensemble methods
-            ens_baseline_mask = ens_panel["Method"] == "Best single cross-trait PRS"
-
-            def highlight_ens_baseline(row):
-                if ens_baseline_mask.loc[row.name]:
-                    return ["background-color: #f1f3f5; font-style: italic"] * len(row)
+            def highlight_self_trait(row):
+                if highlight_mask.loc[row.name]:
+                    return ["background-color: #fff3cd; font-weight: 600"] * len(row)
                 return [""] * len(row)
 
-            styled_ens = (
-                ens_panel.style
-                .apply(highlight_ens_baseline, axis=1)
+            styled_df = (
+                display_df.style
+                .apply(highlight_self_trait, axis=1)
                 .set_properties(**{"text-align": "left"})
             )
 
-            st.dataframe(styled_ens, use_container_width=True, hide_index=True)
-
-            st.caption(
-                "Ensemble PRSs combine the top 10 candidate cross-trait PRSs for the target trait. "
-                "In-sample evaluation in All of Us (N = 70,000); out-of-sample evaluation in UK Biobank (N = 224,301). "
-                "Delta is the AUC difference against the best single cross-trait PRS in the same evaluation. "
-                "Available for European ancestry and for traits evaluated in both biobanks."
+            st.dataframe(
+                styled_df,
+                use_container_width=True,
+                hide_index=True,
             )
-
-            st.markdown("#### Candidate single PRS ranking")
-
-        ### display table ####
-        display_cols = [
-            "rank",
-            "auc",
-            "candidate_icd",
-            "candidate_icd_description",
-            "method",
-            "gwas_source",
-            "gwas_n_sample",
-            "gwas_n_case",
-            "pgs_download_link",
-        ]
-
-        display_df = result[display_cols].copy()
-
-        # format values
-        display_df["rank"] = display_df["rank"].astype(str)
-        display_df["auc"] = display_df["auc"].map(lambda x: f"{x:.4f}")
-        display_df["gwas_n_sample"] = display_df["gwas_n_sample"].map(lambda x: f"{int(x):,}" if pd.notna(x) else "")
-        display_df["gwas_n_case"] = display_df["gwas_n_case"].map(lambda x: f"{int(x):,}" if pd.notna(x) else "")
-
-        # rename columns for display
-        display_df = display_df.rename(columns={
-            "rank": "Rank",
-            "auc": "AUC",
-            "candidate_icd": "Candidate trait ICD-10",
-            "candidate_icd_description": "Candidate trait ontology",
-            "method": "PRS method",
-            "gwas_source": "GWAS source",
-            "gwas_n_sample": "GWAS sample size",
-            "gwas_n_case": "GWAS case size",
-            "pgs_download_link": "PRS download link",
-        })
-
-        highlight_mask = display_df["Candidate trait ICD-10"] == target_icd
-
-        def highlight_self_trait(row):
-            if highlight_mask.loc[row.name]:
-                return ["background-color: #fff3cd; font-weight: 600"] * len(row)
-            return [""] * len(row)
-
-        styled_df = (
-            display_df.style
-            .apply(highlight_self_trait, axis=1)
-            .set_properties(**{"text-align": "left"})
-        )
-
-        st.dataframe(
-            styled_df,
-            use_container_width=True,
-            hide_index=True,
-        )
-
-    else:
-        st.warning("No Evaluation records found.")
