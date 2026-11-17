@@ -1,0 +1,760 @@
+icd_root,n_case,phenocode,description,is_header
+M25,75593,M13_OTHERJOINT,"Other joint disorder, not elsewhere classified",0
+E78,73780,"E4_LIPOPROT,E4_METABOLIA",Disorders of lipoprotein metabolism and other lipidemias,0
+I10,67148,"I9_HYPTENS,I9_HYPTENSESS",Essential (primary) hypertension,1
+M79,65655,M13_SOFTTISSUEOTH,"Oth and unsp soft tissue disorders, not elsewhere classified",0
+M54,64569,"M13_DORSOPATHY,M13_DORSOPATHYOTH",Dorsalgia,0
+G89,53869,,"Pain, not elsewhere classified",0
+R10,51483,PAIN,Abdominal and pelvic pain,0
+K21,48642,K11_REFLUX,Gastro-esophageal reflux disease,0
+G47,47420,"G6_SLEEPDISOTH,SLEEP",Sleep disorders,0
+R06,47338,,Abnormalities of breathing,0
+F41,47216,,Other anxiety disorders,0
+R53,47154,,Malaise and fatigue,0
+R07,43417,,Pain in throat and chest,0
+R05,41977,,Cough,0
+E66,39483,"ASTHMA_OBESITY,E4_OBESITY",Overweight and obesity,0
+F32,38883,"F5_DEPRESSIO,F5_DEPRESSION_DYSTHYMIA",Depressive episode,0
+Z98,36108,,Other postprocedural states,0
+M19,35618,"M13_ARTHROSIS,M13_ARTHROSIS_INCLAVO,M13_ARTHROSIS_OTH",Other and unspecified osteoarthritis,0
+R00,34407,,Abnormalities of heart beat,0
+R19,33442,,Oth symptoms and signs involving the dgstv sys and abdomen,0
+N39,30173,N14_URETHRAOTH,Other disorders of urinary system,0
+E55,30012,"E4_VIT_D_DEF,VIT_DEF",Vitamin D deficiency,0
+R42,28920,,Dizziness and giddiness,1
+R11,28714,,Nausea and vomiting,0
+R73,28700,,Elevated blood glucose level,0
+R79,28636,,Other abnormal findings of blood chemistry,0
+L82,28066,"L12_OTHERSKINSUBCUTIS,L12_SEBORRKERAT",Seborrheic keratosis,0
+R09,27767,,Oth symptoms and signs involving the circ and resp sys,0
+J06,26875,"ASTHMA_ACUTE_RESPIRATORY_INFECTIONS,ASTHMA_INFECTIONS,BRONCHITIS,J10_ACUTEUPPERINFEC,J10_UPPERINFEC,PULM_INFECTIONS",Acute upper resp infections of multiple and unsp sites,0
+R94,26762,,Abnormal results of function studies,0
+J30,26740,,Vasomotor and allergic rhinitis,0
+D64,26574,D3_ANAEMIA,Other anemias,0
+R51,26388,PAIN,Headache,0
+D22,25842,CD2_BENIGN_MELANOCYTIC,Melanocytic nevi,0
+E11,25805,"DM_NEUROPATHY,T2D,T2D_WIDE",Type 2 diabetes mellitus,0
+M47,25732,"M13_SPONDYLOPATHY,M13_SPONDYLOSIS",Spondylosis,0
+E03,25595,,Other hypothyroidism,0
+E87,25316,"E4_FLUIDELECTRO,E4_METABOLIA","Other disorders of fluid, electrolyte and acid-base balance",0
+R20,25302,,Disturbances of skin sensation,0
+J45,24074,,Asthma,0
+H52,23982,"H7_OCUMUSCLE,H7_REFRAACCOMMODIS",Disorders of refraction and accommodation,0
+I25,23969,"I9_CORATHER,I9_IHD",Chronic ischemic heart disease,0
+K59,23657,"K11_INTESTOTH,K11_OTHFUNC",Other functional intestinal disorders,0
+K64,23516,K11_HAEMORR,Hemorrhoids and perianal venous thrombosis,0
+M85,23283,M13_BONEDENSOTH,Other disorders of bone density and structure,0
+M17,23201,"M13_ARTHROSIS,M13_ARTHROSIS_INCLAVO,M13_ARTHROSIS_KNEE",Osteoarthritis of knee,0
+K57,22859,"K11_DIVERTIC,K11_INTESTOTH",Diverticular disease of intestine,0
+J02,22357,"ASTHMA_ACUTE_RESPIRATORY_INFECTIONS,ASTHMA_INFECTIONS,J10_PHARYNGITIS,J10_UPPERINFEC,PULM_INFECTIONS",Acute pharyngitis,0
+R91,22078,,Abnormal findings on diagnostic imaging of lung,0
+L98,22075,L12_OTHERDISSKINANDSUBCUTIS,"Oth disorders of skin, subcu, not elsewhere classified",0
+L57,21892,,Skin changes due to chronic expsr to nonionizing radiation,0
+H25,21515,H7_CATARACTSENILE,Age-related cataract,0
+R35,21469,,Polyuria,0
+R93,21447,,Abnormal findings on diagnostic imaging of body structures,0
+R68,20621,,Other general symptoms and signs,0
+D12,20621,CD2_BENIGN_COLORECANI,"Benign neoplasm of colon, rectum, anus and anal canal",0
+G43,20214,"G6_MIGRAINE,MIGRAINE_TRIPTAN",Migraine,0
+J01,20111,"ASTHMA_ACUTE_RESPIRATORY_INFECTIONS,ASTHMA_INFECTIONS,J10_SINUSITIS,J10_UPPERINFEC,PULM_INFECTIONS",Acute sinusitis,0
+F43,20006,F5_STRESSOTH,"Reaction to severe stress, and adjustment disorders",0
+M62,19954,M13_MUSCLE,Other disorders of muscle,0
+K63,19929,K11_OTHINT,Other diseases of intestine,0
+H90,19915,,Conductive and sensorineural hearing loss,0
+R21,19877,,Rash and other nonspecific skin eruption,1
+R30,19487,,Pain associated with micturition,0
+L03,19193,L12_CELLULITIS,Cellulitis and acute lymphangitis,0
+M51,18961,"M13_DORSOPATHY,M13_DORSOPATHYOTH,M13_INTERVERTEB","Thoracic, thoracolum, and lumbosacral intvrt disc disorders",0
+L30,18849,"L12_DERMATITISECZEMA,L12_DERMATITISNAS",Other and unspecified dermatitis,0
+R39,18700,,Oth and unsp symptoms and signs involving the GU sys,0
+L81,18659,"L12_OTHERSKINSUBCUTIS,L12_OTHPIGMENTATION",Other disorders of pigmentation,0
+I49,18175,"CARDIAC_ARRHYTM,I9_OTHARR",Other cardiac arrhythmias,0
+R29,18056,,Oth symptoms and signs involving the nervous and ms systems,0
+M48,17939,M13_SPONDYLOPATHY,Other spondylopathies,0
+F17,17809,"F5_SUBSNOALCO,SMOKING_DEPEND",Nicotine dependence,0
+F33,17711,"F5_DEPRESSIO,F5_DEPRESSION_DYSTHYMIA,F5_DEPRESSION_RECURRENT","Major depressive disorder, recurrent",0
+Z90,17613,,"Acquired absence of organs, not elsewhere classified",0
+D48,17594,,Neoplasm of uncertain behavior of other and unsp sites,0
+R41,17268,,Oth symptoms and signs w cognitive functions and awareness,0
+R52,17025,PAIN,"Pain, unspecified",1
+U07,16870,,Emergency use of U07,0
+R22,16861,,"Localized swelling, mass and lump of skin, subcu",0
+K76,16616,K11_DISLIVOTH,Other diseases of liver,0
+J98,16046,"J10_PLEURA,J10_RESPOTHER",Other respiratory disorders,0
+N95,15987,N14_FEMALEGENNONINF,Menopausal and other perimenopausal disorders,0
+M81,15965,M13_OSTEOPOROSIS,Osteoporosis without current pathological fracture,0
+H93,15939,,"Other disorders of ear, not elsewhere classified",0
+H53,15886,H7_VISUDISTURB,Visual disturbances,0
+N40,15697,"N14_MALEGEN,N14_PROSTHYPERPLA",Benign prostatic hyperplasia,0
+H91,15666,,Other and unspecified hearing loss,0
+M75,15509,M13_SHOULDER,Shoulder lesions,0
+R31,15431,,Hematuria,0
+R50,15311,,Fever of other and unknown origin,0
+D18,15310,CD2_BENIGN_HEAMANGIOMA_LYMPHANGIOMA,"Hemangioma and lymphangioma, any site",0
+N18,15226,"N14_CHRONKIDNEYDIS,N14_RENFAIL",Chronic kidney disease (CKD),0
+B35,15118,"AB1_DERMATOPHYTOSIS,AB1_MYCOSES",Dermatophytosis,0
+D72,14980,"D3_BLOODOTHER,D3_OTHERWHITECELL",Other disorders of white blood cells,0
+R92,14955,,Abnormal and inconclusive findings on dx imaging of breast,0
+H61,14655,H8_EXTERNAL,Other disorders of external ear,0
+R13,14654,,Aphagia and dysphagia,0
+D50,14550,"D3_ANAEMIA,D3_ANAEMIA_IRONDEF,D3_ANAEMIA_IRONDEF_NAS",Iron deficiency anemia,0
+R55,14403,,Syncope and collapse,1
+H04,14291,H7_LACRIMALSYSTEM,Disorders of lacrimal system,0
+J32,14255,J10_CHRONSINUSITIS,Chronic sinusitis,0
+I48,14203,"CARDIAC_ARRHYTM,I9_AF",Atrial fibrillation and flutter,0
+K62,13968,K11_OTHANRECT,Other diseases of anus and rectum,0
+M77,13806,M13_ENTESOPATHYOTH,Other enthesopathies,0
+G62,13774,,Other and unspecified polyneuropathies,0
+N64,13239,N14_BREASTDISOTH,Other disorders of breast,0
+E83,13235,"E4_METABOLIA,E4_MINERAL_MET",Disorders of mineral metabolism,0
+N28,13172,N14_KIDUROTH,"Oth disorders of kidney and ureter, not elsewhere classified",0
+J34,12831,J10_VOCALLARYNX,Other and unspecified disorders of nose and nasal sinuses,0
+H43,12615,H7_VITRBODYGLOBE,Disorders of vitreous body,0
+D23,12600,CD2_BENIGN_SKIN,Other benign neoplasms of skin,0
+K52,12580,"K11_ENERCOLNONINF,K11_OTHENTERCOL",Other and unsp noninfective gastroenteritis and colitis,0
+J18,12368,"ASTHMA_INFECTIONS,J10_PNEUMONIA,PULM_INFECTIONS","Pneumonia, unspecified organism",0
+I95,12301,I9_HYPOTE,Hypotension,0
+N30,12136,N14_CYSTITIS,Cystitis,0
+N17,12124,"N14_ACUTERENFAIL,N14_RENFAIL",Acute kidney failure,0
+J20,12039,"ASTHMA_ACUTE_RESPIRATORY_INFECTIONS,ASTHMA_INFECTIONS,BRONCHITIS,J10_BRONCHITIS,J10_LOWERINF,PULM_INFECTIONS",Acute bronchitis,0
+H35,12037,,Other retinal disorders,0
+K29,12030,,Gastritis and duodenitis,0
+G56,11902,,Mononeuropathies of upper limb,0
+M16,11771,"M13_ARTHROSIS,M13_ARTHROSIS_INCLAVO,M13_ARTHTROSIS_COX",Osteoarthritis of hip,0
+T14,11638,,Injury of unspecified body region,0
+K44,11609,K11_DIAHER,Diaphragmatic hernia,0
+M65,11604,M13_SYNOTEND,Synovitis and tenosynovitis,0
+H26,11473,H7_CATARACTOTHER,Other cataract,0
+I50,11441,"I9_HEARTFAIL,I9_HEARTFAIL_AND_CHD,I9_HEARTFAIL_AND_HYPERTCARDIOM,I9_HEARTFAIL_AND_OVERWEIGHT,I9_NONISCHCARDMYOP",Heart failure,0
+J44,11280,"COPD_EARLY,COPD_LATER,J10_COPD",Other chronic obstructive pulmonary disease,0
+N20,11111,N14_CALCUKIDUR,Calculus of kidney and ureter,0
+H02,10967,H7_EYELIDDIS,Other disorders of eyelid,0
+L72,10929,L12_FOLLICULARCYST,Follicular cysts of skin and subcutaneous tissue,0
+C44,10887,,Other and unspecified malignant neoplasm of skin,0
+M89,10881,M13_OTHERBONE,Other disorders of bone,0
+K31,10839,"K11_OESSTODUO,K11_OTHDISSTOMDUOD",Other diseases of stomach and duodenum,0
+E53,10815,"E4_VIT_B_DEF,VIT_DEF",Deficiency of other B group vitamins,0
+N63,10739,N14_LUMPNASBREAST,Unspecified lump in breast,0
+M76,10655,M13_ENTESOPATHYLOW,"Enthesopathies, lower limb, excluding foot",0
+H40,10650,H7_GLAUCOMA,Glaucoma,0
+E04,10642,,Other nontoxic goiter,0
+I51,10575,I9_OTHILLHEART,Complications and ill-defined descriptions of heart disease,0
+M21,10554,M13_OTHERJOINT,Other acquired deformities of limbs,0
+G25,10553,G6_XTRAPYROTH,Other extrapyramidal and movement disorders,0
+E86,10526,"E4_METABOLIA,E4_VOLUME",Volume depletion,0
+R23,10514,,Other skin changes,0
+M70,10334,M13_SOFTOVERUSE,"Soft tissue disorders related to use, overuse and pressure",0
+M67,10302,M13_SYNOTEND,Other disorders of synovium and tendon,0
+R59,10097,,Enlarged lymph nodes,0
+K58,9989,"K11_IBS,K11_INTESTOTH",Irritable bowel syndrome,0
+H10,9973,"H7_CONJUNCTIVITIS,H7_CONJUNCTIVITISACUNONATOPIC",Conjunctivitis,0
+K22,9938,,Other diseases of esophagus,0
+B37,9886,"AB1_CANDIDIASIS,AB1_MYCOSES",Candidiasis,0
+M43,9871,M13_DEFORMDORSO,Other deforming dorsopathies,0
+R14,9802,,Flatulence and related conditions,0
+B96,9762,"AB1_BACT_BIR_OTHER_INF_AGENTS,AB1_OTHER_BACT_INOTHER",Oth bacterial agents as the cause of diseases classd elswhr,0
+Z99,9688,,"Dependence on enabling machines and devices, NEC",0
+M72,9682,M13_FIBROBLASTIC,Fibroblastic disorders,0
+N92,9505,"N14_FEMALEGENNONINF,N14_MESNRUIRREG","Excessive, frequent and irregular menstruation",0
+L60,9478,"L12_DISORDSKINAPPENDIX,L12_NAILDIS",Nail disorders,0
+F51,9470,"F5_BEHAVE,SLEEP",Sleep disorders not due to a substance or known physiol cond,0
+N52,9439,,Male erectile dysfunction,0
+I73,9419,I9_OTHPER,Other peripheral vascular diseases,0
+K92,9356,K11_OTHDISDIG,Other diseases of digestive system,0
+M20,9305,M13_OTHERJOINT,Acquired deformities of fingers and toes,0
+N89,9304,N14_OTHNONINFVAG,Other noninflammatory disorders of vagina,0
+L29,9302,"L12_DERMATITISECZEMA,L12_PRURITUS",Pruritus,0
+I78,9285,I9_ARTOTH,Diseases of capillaries,0
+J40,9268,J10_BRONCH,"Bronchitis, not specified as acute or chronic",1
+L85,9216,"L12_EPIDERMALTHICKOTH,L12_OTHERSKINSUBCUTIS",Other epidermal thickening,0
+I34,9173,"FG_CVD,FG_OTHHEART,I9_VHD",Nonrheumatic mitral valve disorders,0
+Z95,9132,,Presence of cardiac and vascular implants and grafts,0
+L90,9094,"L12_ATROPHICSKIN,L12_OTHERSKINSUBCUTIS",Atrophic disorders of skin,0
+G44,8965,G6_HEADACHE,Other headache syndromes,0
+L02,8935,L12_ABSCESS_CUT,"Cutaneous abscess, furuncle and carbuncle",0
+H92,8915,,Otalgia and effusion of ear,0
+M53,8865,"M13_DORSOPATHY,M13_DORSOPATHYOTH","Other and unspecified dorsopathies, not elsewhere classified",0
+D69,8834,"D3_COAGDEF_PURPUR_HAEMORRHAGIC,D3_PURPURA_AND3_OTHER_HAEMORRHAGIC",Purpura and other hemorrhagic conditions,0
+M50,8639,"M13_CERVICDISC,M13_DORSOPATHY,M13_DORSOPATHYOTH",Cervical disc disorders,0
+R26,8432,,Abnormalities of gait and mobility,0
+S09,8403,,Other and unspecified injuries of head,0
+N94,8384,"N14_FEMALEGENNONINF,N14_FEMGENPAIN",Pain and oth cond assoc w fem gntl org and menstrual cycle,0
+R82,8372,,Other and unspecified abnormal findings in urine,0
+G93,8257,G6_CERCYST,Other disorders of brain,0
+J31,8238,J10_CHRONRHINITIS,"Chronic rhinitis, nasopharyngitis and pharyngitis",0
+N13,8230,N14_OBSTRUREFLUROPATH,Obstructive and reflux uropathy,0
+L73,8179,L12_FOLICULAROTH,Other follicular disorders,0
+F10,8172,AUD_SWEDISH,Alcohol related disorders,0
+R33,8164,R18_RETEN_URINE,Retention of urine,0
+I87,8075,"I9_DISVEINLYMPH,I9_VEINSOTH",Other disorders of veins,0
+I12,8001,"I9_HYPTENS,I9_HYPTENSRD",Hypertensive chronic kidney disease,0
+R25,7902,,Abnormal involuntary movements,0
+S83,7868,,Dislocation and sprain of joints and ligaments of knee,0
+L91,7864,,Hypertrophic disorders of skin,0
+I47,7777,"CARDIAC_ARRHYTM,I9_PAROXTAC",Paroxysmal tachycardia,0
+J96,7747,"J10_PLEURA,J10_RESPOTHER","Respiratory failure, not elsewhere classified",0
+B07,7732,"AB1_VIRAL_SKIN_MUCOUS_MEMBRANE,AB1_VIRAL_WARTS",Viral warts,0
+N32,7715,N14_OTHBLADD,Other disorders of bladder,0
+I35,7708,"FG_CVD,FG_OTHHEART,I9_VHD",Nonrheumatic aortic valve disorders,0
+I70,7704,I9_ATHSCLE,Atherosclerosis,0
+H81,7602,,Disorders of vestibular function,0
+B34,7586,AB1_VIRAL_NOS,Viral infection of unspecified site,0
+D49,7577,,Neoplasms of unspecified behavior,0
+K80,7561,K11_CHOLELITH,Cholelithiasis,0
+I77,7513,I9_ARTOTH,Other disorders of arteries and arterioles,0
+A41,7509,"AB1_OTHER_BACTERIAL,AB1_OTHER_SEPSIS",Other sepsis,0
+R45,7468,,Symptoms and signs involving emotional state,0
+I11,7351,"I9_HYPTENS,I9_HYPTENSHD",Hypertensive heart disease,0
+S61,7343,,"Open wound of wrist, hand and fingers",0
+N93,7341,"N14_ABNORMALBLEED,N14_FEMALEGENNONINF",Other abnormal uterine and vaginal bleeding,0
+H57,7204,H7_EYEOTH,Other disorders of eye and adnexa,0
+S93,7057,,"Disloc & sprain of joints & ligaments at ankl, ft & toe lev",0
+L70,7003,"L12_ACNE,L12_DISORDSKINAPPENDIX",Acne,0
+L21,6978,"L12_DERMATITISECZEMA,L12_SEBORRHOEIC",Seborrheic dermatitis,0
+R32,6919,,Unspecified urinary incontinence,1
+B97,6874,"AB1_BACT_BIR_OTHER_INF_AGENTS,AB1_VIRAL_INOTHER",Viral agents as the cause of diseases classified elsewhere,0
+H69,6830,"H8_EUSTNAS,H8_MIDDLEMASTOID",Other and unspecified disorders of Eustachian tube,0
+S80,6782,,Superficial injury of knee and lower leg,0
+M15,6738,"M13_ARTHROSIS,M13_ARTHROSIS_INCLAVO,M13_ARTHROSIS_POLY",Polyosteoarthritis,0
+L71,6690,,Rosacea,0
+I82,6632,"I9_DISVEINLYMPH,I9_THROMBOTH",Other venous embolism and thrombosis,0
+L08,6600,L12_INFECT_SKIN_OTHER,Other local infections of skin and subcutaneous tissue,0
+F31,6594,F5_BIPO,Bipolar disorder,0
+I45,6583,I9_CONDUCTIO,Other conduction disorders,0
+I44,6582,I9_CONDUCTIO,Atrioventricular and left bundle-branch block,0
+N60,6577,N14_BENIGNMAMDYSP,Benign mammary dysplasia,0
+I83,6560,"I9_DISVEINLYMPH,I9_VARICVE",Varicose veins of lower extremities,0
+Z74,6504,,Problems related to care provider dependency,0
+M94,6463,"M13_CHRONDROPATHIES,M13_OSTEOCHONDRO,M13_OTHERBONE",Other disorders of cartilage,0
+N76,6427,,Other inflammation of vagina and vulva,0
+N83,6420,,"Noninflammatory disord of ovary, fallop and broad ligament",0
+H66,6337,H8_MIDDLEMASTOID,Suppurative and unspecified otitis media,0
+J90,6321,"J10_PLEURA,J10_PLEUREFFUSION","Pleural effusion, not elsewhere classified",1
+I20,6214,"I9_ANGINA,I9_IHD",Angina pectoris,0
+S46,6214,,"Injury of muscle, fascia and tendon at shldr/up arm",0
+R97,6205,,Abnormal tumor markers,0
+H01,6118,H7_EYELIDINFLAMMATION,Other inflammation of eyelid,0
+R01,6051,,Cardiac murmurs and other cardiac sounds,0
+F39,5999,"F5_MOOD,F5_MOODOTH",Unspecified mood [affective] disorder,1
+D62,5984,"D3_ACUTEPOSTBLEEDANAEMIA,D3_ANAEMIA",Acute posthemorrhagic anemia,1
+F90,5943,"F5_BEHEMOCHILD,F5_HYPERKIN",Attention-deficit hyperactivity disorders,0
+I65,5941,,"Occls and stenosis of precerb art, not rslt in cereb infrc",0
+Z01,5936,,"Encntr for oth sp exam w/o complaint, suspected or reprtd dx",0
+E61,5922,,Deficiency of other nutrient elements,0
+G57,5888,,Mononeuropathies of lower limb,0
+R49,5882,,Voice and resonance disorders,0
+C50,5869,,Malignant neoplasm of breast,0
+Y83,5818,,"Surg op & oth surg proc cause abn react/compl, w/o misadvnt",0
+S00,5779,,Superficial injury of head,0
+F11,5747,"F5_OPIOIDS,F5_SUBSNOALCO",Opioid related disorders,0
+D68,5669,"D3_COAGDEF_PURPUR_HAEMORRHAGIC,D3_COAGOTHER",Other coagulation defects,0
+H60,5663,"H8_EXTERNAL,H8_EXTOTITIS",Otitis externa,0
+B02,5627,"AB1_VIRAL_SKIN_MUCOUS_MEMBRANE,AB1_ZOSTER",Zoster [herpes zoster],0
+T78,5616,,"Adverse effects, not elsewhere classified",0
+M10,5611,M13_GOUT,Gout,0
+T81,5540,,"Complications of procedures, not elsewhere classified",0
+L65,5499,"L12_DISORDSKINAPPENDIX,L12_HAIRLOSSNONSCAR",Other nonscarring hair loss,0
+I42,5496,I9_CARDMYO,Cardiomyopathy,0
+E28,5484,"E4_ENDOGLAND,E4_OVARDYS",Ovarian dysfunction,0
+R40,5459,,"Somnolence, stupor and coma",0
+R87,5411,,Abnormal findings in specimens from female genital organs,0
+M99,5389,"M13_BIOMECHLESIO,M13_MUSCULOSKELEOTH","Biomechanical lesions, not elsewhere classified",0
+B00,5370,"AB1_HERPES_SIMPLEX,AB1_VIRAL_SKIN_MUCOUS_MEMBRANE",Herpesviral [herpes simplex] infections,0
+L25,5361,"L12_DERMATITISECZEMA,L12_OTHERCONTACT",Unspecified contact dermatitis,0
+R04,5339,BLEEDING,Hemorrhage from respiratory passages,0
+S99,5328,,Other and unspecified injuries of ankle and foot,0
+S92,5313,ST19_FRACT_FOOT_ANKLE,"Fracture of foot and toe, except ankle",0
+M41,5299,"M13_DEFORMDORSO,M13_SCOLIOSIS",Scoliosis,0
+M24,5291,M13_OTHERJOINT,Other specific joint derangements,0
+L40,5275,"AUTOIMMUNE,AUTOIMMUNE_NONTHYROID,ILD_ENDPOINTS,L12_PSORIASIS",Psoriasis,0
+K08,5254,K11_DISORD_TEETH,Other disorders of teeth and supporting structures,0
+E88,5253,E4_METABOLIA,Other and unspecified metabolic disorders,0
+D63,5249,"D3_ANAEMIA,D3_ANAEMIAINCHRONICDISEASE",Anemia in chronic diseases classified elsewhere,0
+S01,5212,,Open wound of head,0
+D17,5167,CD2_BENIGN_LIPOMATOUS,Benign lipomatous neoplasm,0
+M18,5105,"M13_ARTHROSIS,M13_ARTHROSIS_INCLAVO,M13_ARTHROSIS_OTH",Osteoarthritis of first carpometacarpal joint,0
+L84,5036,"L12_CORNSANDCALLOS,L12_OTHERSKINSUBCUTIS",Corns and callosities,1
+M35,5020,M13_SYSTCONNECT,Other systemic involvement of connective tissue,0
+S39,5005,,"Oth & unsp injuries of abd, low back, pelv & extrn genitals",0
+I27,4991,"COPD_INSUFFICIENCY,I9_SECONDRIGHT,ILD_INSUFFICIENCY",Other pulmonary heart diseases,0
+M71,4987,M13_BURSOPATHY,Other bursopathies,0
+I63,4984,"C_STROKE,I9_CVD_HARD,I9_STR",Cerebral infarction,0
+M46,4965,"ILD_ENDPOINTS,M13_SPONDYLOPATHY,SPONDYLOARTHRITIS",Other inflammatory spondylopathies,0
+K40,4915,K11_HERING,Inguinal hernia,0
+Z72,4901,,Problems related to lifestyle,0
+K13,4898,K11_LIP_ORAL_MUCOSA,Other diseases of lip and oral mucosa,0
+M06,4888,"AUTOIMMUNE,AUTOIMMUNE_NONTHYROID,M13_POLYARTHROPATHIES,M13_RHEUMA,RHEUMA_OTHER_WIDE",Other rheumatoid arthritis,0
+S82,4849,ST19_FRACT_LOWER_LEG_INCLU_ANKLE,"Fracture of lower leg, including ankle",0
+H65,4844,"H8_MIDDLEMASTOID,H8_NONSUPPNAS",Nonsuppurative otitis media,0
+R12,4810,,Heartburn,1
+J43,4776,"J10_COPD,J10_EMPHYSEMA",Emphysema,0
+D25,4759,CD2_BENIGN_LEIOMYOMA_UTERI,Leiomyoma of uterus,0
+S90,4758,,"Superficial injury of ankle, foot and toes",0
+M12,4755,,Other and unspecified arthropathy,0
+S22,4714,ST19_FRACT_RIBS_STERNUM_THORACIC_SPINE,"Fracture of rib(s), sternum and thoracic spine",0
+S69,4686,,"Other and unspecified injuries of wrist, hand and finger(s)",0
+R56,4684,,"Convulsions, not elsewhere classified",0
+S06,4684,,Intracranial injury,0
+I21,4678,"I9_CHD,I9_CVD_HARD,I9_IHD,I9_MI_STRICT",Acute myocardial infarction,0
+N81,4629,N14_FEMGENPROL,Female genital prolapse,0
+L23,4624,"L12_ALLERGICCONTACT,L12_DERMATITISECZEMA",Allergic contact dermatitis,0
+M23,4618,"M13_KNEEDERANGEMENTS,M13_OTHERJOINT",Internal derangement of knee,0
+I67,4606,,Other cerebrovascular diseases,0
+F19,4593,"F5_OTHERSUB,F5_SUBSNOALCO",Other psychoactive substance related disorders,0
+R61,4592,,Generalized hyperhidrosis,1
+F12,4565,"F5_CANNABIS,F5_SUBSNOALCO",Cannabis related disorders,0
+R16,4552,,"Hepatomegaly and splenomegaly, not elsewhere classified",0
+C61,4543,,Malignant neoplasm of prostate,1
+L50,4541,,Urticaria,0
+E89,4529,"E4_ENDOMETPOSTOP,E4_METABOLIA","Postproc endocrine and metabolic comp and disorders, NEC",0
+S62,4526,ST19_FRACT_WRIST_HAND_LEVEL,Fracture at wrist and hand level,0
+G45,4455,"C_STROKE,I9_TIA",Transient cerebral ischemic attacks and related syndromes,0
+K02,4397,Q17_CLEFT_AND_CARIES,Dental caries,0
+K86,4391,,Other diseases of pancreas,0
+K56,4389,"K11_ILEUS,K11_INTESTOTH",Paralytic ileus and intestinal obstruction without hernia,0
+D75,4323,"D3_BLOODOTHER,D3_OTHERBLOOD",Other and unsp diseases of blood and blood-forming organs,0
+R80,4320,,Proteinuria,0
+G40,4263,G6_EPLEPSY,Epilepsy and recurrent seizures,0
+D89,4218,D3_IMMUNEMECHANISM,"Oth disorders involving the immune mechanism, NEC",0
+Z91,4210,,"Personal risk factors, not elsewhere classified",0
+D84,4150,"D3_IMMUDEF,D3_IMMUDEFOTHER,D3_IMMUNEMECHANISM",Other immunodeficiencies,0
+E06,4034,ILD_ENDPOINTS,Thyroiditis,0
+M26,4016,,Dentofacial anomalies [including malocclusion],0
+B95,4013,"AB1_BACT_BIR_OTHER_INF_AGENTS,AB1_STREPTSTAPHYCOCC_INOTHER",Strep as the cause of diseases classified elsewhere,0
+K20,4005,"K11_OESITIS,K11_OESITIS_ADVERSE",Esophagitis,0
+G31,3971,,"Oth degenerative diseases of nervous system, NEC",0
+G60,3958,,Hereditary and idiopathic neuropathy,0
+S60,3949,,"Superficial injury of wrist, hand and fingers",0
+I26,3910,"I9_PULMEMB,I9_VTE",Pulmonary embolism,0
+M22,3899,M13_OTHERJOINT,Disorder of patella,0
+H00,3891,,Hordeolum and chalazion,0
+S52,3885,ST19_FRACT_FOREA,Fracture of forearm,0
+O99,3884,O15_OTHER_MATERN_DIS_ELSEWHERE,Oth maternal diseases classd elsw but compl preg/chldbrth,0
+K43,3874,"ABDOM_HERNIA,ABDOM_HERNIA_POSTOP,K11_VENTHER",Ventral hernia,0
+S43,3871,,Disloc and sprain of joints and ligaments of shoulder girdle,0
+S63,3862,,Dislocation and sprain of joints and ligaments at wrs/hnd lv,0
+S89,3839,,Other and unspecified injuries of lower leg,0
+L97,3819,L12_ULCERLOWLIMB,"Non-pressure chronic ulcer of lower limb, NEC",0
+F34,3787,F5_PERSMOOD,Persistent mood [affective] disorders,0
+K42,3774,"ABDOM_HERNIA,ABDOM_HERNIA_POSTOP,K11_UMBHER",Umbilical hernia,0
+R15,3769,,Fecal incontinence,0
+R65,3731,,Symp and signs specifically assoc w sys inflam and infct,0
+R69,3697,,"Illness, unspecified",1
+J84,3684,ILD_ENDPOINTS,Other interstitial pulmonary diseases,0
+S76,3643,,"Injury of muscle, fascia and tendon at hip and thigh level",0
+H54,3620,H7_BLINDANDVISIMPAIRMENT,Blindness and low vision,0
+I08,3615,"AUTOIMMUNE,AUTOIMMUNE_NONTHYROID,I9_RHEUFEV,I9_RHEUVALV",Multiple valve diseases,0
+J38,3609,"J10_VOCALLARYNX,VOCALCORDDYS","Diseases of vocal cords and larynx, not elsewhere classified",0
+K90,3588,K11_MALABSORB,Intestinal malabsorption,0
+E07,3551,,Other disorders of thyroid,0
+N90,3551,"N14_FEMALEGENNONINF,N14_OTHNONINFVULV",Other noninflammatory disorders of vulva and perineum,0
+T84,3545,,Complications of internal orthopedic prosth dev/grft,0
+I71,3539,,Aortic aneurysm and dissection,0
+H47,3496,"H7_OPTNERVE,H7_OPTNEUROTH",Other disorders of optic [2nd] nerve and visual pathways,0
+K04,3482,,Diseases of pulp and periapical tissues,0
+I89,3464,"I9_DISVEINLYMPH,I9_LYMPHOTH",Oth noninfective disorders of lymphatic vessels and nodes,0
+I36,3453,"FG_CVD,FG_OTHHEART,I9_VHD",Nonrheumatic tricuspid valve disorders,0
+O09,3405,,Supervision of high risk pregnancy,0
+N50,3404,"N14_MALEGEN,N14_OTHDISMALEGEN",Other and unspecified disorders of male genital organs,0
+H18,3364,"H7_CORNEALOTH,H7_KERATITIS,H7_SCLERACORNEA",Other disorders of cornea,0
+S20,3323,,Superficial injury of thorax,0
+S81,3311,,Open wound of knee and lower leg,0
+H11,3303,,Other disorders of conjunctiva,0
+O26,3302,O15_PREG_MATERN_CARE,Maternal care for oth conditions predom related to pregnancy,0
+R89,3279,,Abnormal findings in specimens from oth org/tiss,0
+I13,3266,I9_HYPTENS,Hypertensive heart and chronic kidney disease,0
+N91,3255,"N14_FEMALEGENNONINF,N14_MENSIRREG","Absent, scanty and rare menstruation",0
+R63,3236,,Symptoms and signs concerning food and fluid intake,0
+E21,3217,"E4_ENDOGLAND,E4_PARATHYRO",Hyperparathyroidism and other disorders of parathyroid gland,0
+R74,3143,,Abnormal serum enzyme levels,0
+S86,3127,,"Injury of muscle, fascia and tendon at lower leg level",0
+D36,3108,CD2_BENIGN_OTHER_NOS,Benign neoplasm of other and unspecified sites,0
+E16,3108,E4_GLUCOPANCREAS,Other disorders of pancreatic internal secretion,0
+E05,3107,,Thyrotoxicosis [hyperthyroidism],0
+E27,3103,E4_ENDOGLAND,Other disorders of adrenal gland,0
+J11,3080,"ASTHMA_ACUTE_RESPIRATORY_INFECTIONS,ASTHMA_INFECTIONS,BRONCHITIS,INFLUENZA,J10_INFLUENZA,PULM_INFECTIONS",Influenza due to unidentified influenza virus,0
+S42,3060,ST19_FRACT_SHOUL_UPPER_ARM,Fracture of shoulder and upper arm,0
+S91,3049,,"Open wound of ankle, foot and toes",0
+K74,3026,K11_FIBROCHIRLIV,Fibrosis and cirrhosis of liver,0
+K91,3021,K11_POSTOPDIS,"Intraop and postproc comp and disorders of dgstv sys, NEC",0
+D47,3006,,"Oth neoplm of uncrt behav of lymphoid, hematpoetc & rel tiss",0
+L20,2993,"ASTHMA_ALLERG,CHILDHOOD_ALLERGY,L12_ATOPIC,L12_DERMATITISECZEMA",Atopic dermatitis,0
+K82,2987,K11_GALLBLAOTH,Other diseases of gallbladder,0
+G90,2978,G6_AUTONOM,Disorders of autonomic nervous system,0
+S30,2973,,"Superfic inj abdomen, low back, pelvis and external genitals",0
+T82,2969,,Complications of cardiac and vascular prosth dev/grft,0
+K12,2957,K11_STOMATITIS,Stomatitis and related lesions,0
+S16,2941,,"Injury of muscle, fascia and tendon at neck level",0
+S05,2893,,Injury of eye and orbit,0
+R90,2863,,Abnormal findings on diagnostic imaging of cnsl,0
+K75,2856,K11_OTHINFLIV,Other inflammatory liver diseases,0
+M13,2830,,Other arthritis,0
+I15,2783,"I9_HYPTENS,I9_HYPTENSEC",Secondary hypertension,0
+F15,2762,"F5_STIMUL,F5_SUBSNOALCO",Other stimulant related disorders,0
+S32,2756,ST19_FRACT_LUMBAR_SPINE_PELVIS,Fracture of lumbar spine and pelvis,0
+S29,2754,,Other and unspecified injuries of thorax,0
+H16,2744,"H7_KERATITIS,H7_KERATITISOTH,H7_SCLERACORNEA",Keratitis,0
+K83,2743,K11_BILIAOTH,Other diseases of biliary tract,0
+K11,2732,K11_SALIVARY,Diseases of salivary glands,0
+E29,2723,E4_ENDOGLAND,Testicular dysfunction,0
+T85,2699,,Complications of internal prosth dev/grft,0
+F40,2699,"F5_ALLANXIOUS,F5_PHOBANX",Phobic anxiety disorders,0
+E10,2697,"AUTOIMMUNE,AUTOIMMUNE_NONTHYROID,DM_NEUROPATHY,T1D,T1D_EARLY,T1D_STRICT2",Type 1 diabetes mellitus,0
+R18,2689,,Ascites,0
+S40,2685,,Superficial injury of shoulder and upper arm,0
+R47,2677,,"Speech disturbances, not elsewhere classified",0
+G95,2676,G6_SPINOTH,Other and unspecified diseases of spinal cord,0
+L53,2673,,Other erythematous conditions,0
+Z15,2670,,Genetic susceptibility to disease,0
+B19,2655,AB1_VIRAL_HEPATITIS,Unspecified viral hepatitis,0
+D70,2650,"D3_AGRANULOCYTOSIS,D3_BLOODOTHER",Neutropenia,0
+C79,2650,,Secondary malignant neoplasm of other and unspecified sites,0
+F45,2643,F5_SOMATOFORM,Somatoform disorders,0
+A49,2628,"AB1_BACTINF_NOS,AB1_OTHER_BACTERIAL",Bacterial infection of unspecified site,0
+N84,2623,N14_POLYPFEMGEN,Polyp of female genital tract,0
+L24,2603,"L12_DERMATITISECZEMA,L12_OTHERCONTACT",Irritant contact dermatitis,0
+N85,2597,N14_OTHNONINFUTER,"Other noninflammatory disorders of uterus, except cervix",0
+M84,2565,M13_BONECONTINUITY,Disorder of continuity of bone,0
+D04,2560,CD2_INSITU_SKIN_EXALLC,Carcinoma in situ of skin,0
+S02,2558,ST19_FRACT_SKULL_FACIAL_BONES,Fracture of skull and facial bones,0
+K05,2551,,Gingivitis and periodontal diseases,0
+K66,2541,"K11_OTHPERITON,K11_PERITON",Other disorders of peritoneum,0
+J81,2534,J10_PULMOEDEMA,Pulmonary edema,0
+K25,2529,"K11_GASTRODUOULC,K11_GULC",Gastric ulcer,0
+N80,2503,"N14_ENDOMETRIOSIS,N14_ENDOMET_INFERT",Endometriosis,0
+K51,2496,"AUTOIMMUNE,AUTOIMMUNE_NONTHYROID,ILD_ENDPOINTS,K11_ENERCOLNONINF,K11_IBD_STRICT,K11_IBD_STRICT_PSC,K11_UC_STRICT2,K11_UC_STRICT_PSC",Ulcerative colitis,0
+S50,2495,,Superficial injury of elbow and forearm,0
+L28,2476,"L12_DERMATITISECZEMA,L12_LICHSIMPANDPRURIGO",Lichen simplex chronicus and prurigo,0
+H33,2461,,Retinal detachments and breaks,0
+A04,2457,"AB1_BACT_INTEST_OTH,AB1_INTESTINAL_INFECTIONS",Other bacterial intestinal infections,0
+C77,2447,,Secondary and unspecified malignant neoplasm of lymph nodes,0
+T83,2443,,Complications of genitourinary prosth dev/grft,0
+E46,2435,E4_PROTMALNAS,Unspecified protein-calorie malnutrition,1
+D31,2410,CD2_BENIGN_EYE,Benign neoplasm of eye and adnexa,0
+I31,2345,I9_PERICAOTH,Other diseases of pericardium,0
+E44,2344,E4_PROTMALMODMILD,Protein-calorie malnutrition of moderate and mild degree,0
+N12,2335,N14_TUBULOINTNEPHRNAS,"Tubulo-interstitial nephritis, not spcf as acute or chronic",1
+J10,2319,"ASTHMA_ACUTE_RESPIRATORY_INFECTIONS,ASTHMA_INFECTIONS,BRONCHITIS,INFLUENZA,J10_INFLUENZA,PULM_INFECTIONS",Influenza due to other identified influenza virus,0
+B18,2287,AB1_VIRAL_HEPATITIS,Chronic viral hepatitis,0
+Y84,2286,,"Oth medical procedures cause abn react/compl, w/o misadvnt",0
+F98,2268,F5_BEHEMOCHILD,Oth behav/emotn disord w onset usly occur in chldhd and adol,0
+H50,2267,"H7_OCUMUSCLE,H7_STRABOTH",Other strabismus,0
+K81,2234,K11_CHOLECYST,Cholecystitis,0
+I69,2216,I9_SEQULAE,Sequelae of cerebrovascular disease,0
+S70,2194,,Superficial injury of hip and thigh,0
+F60,2191,,Specific personality disorders,0
+M86,2186,M13_OSTEOMYELITIS,Osteomyelitis,0
+C43,2183,,Malignant melanoma of skin,0
+J47,2175,"ASTHMA_OPPORTUNIST_INFECTIONS,COPD_OPPORTUNIST_INFECTIONS,J10_BRONCHIECTASIS",Bronchiectasis,0
+R43,2171,,Disturbances of smell and taste,0
+M96,2166,"M13_MUSCULOSKELEOTH,M13_POSTOPMUSCULOSKE","Intraop and postproc comp and disorders of ms sys, NEC",0
+K85,2148,K11_ACUTPANC,Acute pancreatitis,0
+D35,2142,CD2_BENIGN_ENDOCRINE_OTH,Benign neoplasm of other and unspecified endocrine glands,0
+D05,2117,CD2_INSITU_BREAST_EXALLC,Carcinoma in situ of breast,0
+J69,2108,J10_PNEUMONISOLLIQ,Pneumonitis due to solids and liquids,0
+S49,2100,,Other and unspecified injuries of shoulder and upper arm,0
+E13,2092,"DM_NEUROPATHY,DM_RETINOPATHY",Other specified diabetes mellitus,0
+N31,2045,N14_NEUROMUSCDYSBLADD,"Neuromuscular dysfunction of bladder, NEC",0
+I07,2044,"AUTOIMMUNE,AUTOIMMUNE_NONTHYROID,I9_RHEUFEV,I9_RHEUVALV",Rheumatic tricuspid valve diseases,0
+K30,2043,"K11_FUNCDYSP,K11_OESSTODUO",Functional dyspepsia,1
+K50,2032,"AUTOIMMUNE,AUTOIMMUNE_NONTHYROID,ILD_ENDPOINTS,K11_CD_STRICT2,K11_CD_STRICT_PSC,K11_ENERCOLNONINF,K11_IBD_STRICT,K11_IBD_STRICT_PSC",Crohn's disease [regional enteritis],0
+C80,2014,,Malignant neoplasm without specification of site,0
+A09,2001,"AB1_GASTROENTERITIS_NOS,AB1_INTESTINAL_INFECTIONS","Infectious gastroenteritis and colitis, unspecified",1
+I80,1973,"I9_DISVEINLYMPH,I9_PHLETHROM,I9_VTE",Phlebitis and thrombophlebitis,0
+D51,1961,"AUTOIMMUNE,AUTOIMMUNE_NONTHYROID,D3_ANAEMIA,D3_ANAEMIA_B12_DEF",Vitamin B12 deficiency anemia,0
+K14,1949,TONGUEABNORMALITY,Diseases of tongue,0
+Q66,1946,"Q17_CONGEN_DEFORMITI_FEET,Q17_CONGEN_MALFO_DEFORMAT_MUSCULOS_SYSTEM",Congenital deformities of feet,0
+N62,1937,"N14_HYPERTROPHYBREAST,N14_HYPERTROPHYBREAST_BOTH",Hypertrophy of breast,1
+D53,1914,"D3_ANAEMIA,D3_NUTRIANAEMIAOTHER",Other nutritional anemias,0
+S72,1897,ST19_FRACT_FEMUR,Fracture of femur,0
+K03,1895,,Other diseases of hard tissues of teeth,0
+Q82,1884,Q17_OTHER_CONGEN_MALFO_SKIN,Other congenital malformations of skin,0
+R76,1877,,Other abnormal immunological findings in serum,0
+A08,1867,"AB1_INTESTINAL_INFECTIONS,AB1_VIRAL_OTHER_INTEST_INFECTIONS",Viral and other specified intestinal infections,0
+E43,1859,E4_PROTMALSEVERNAS,Unspecified severe protein-calorie malnutrition,1
+E08,1857,,Diabetes mellitus due to underlying condition,0
+I16,1854,,Hypertensive crisis,0
+Z94,1849,COPD_INSUFFICIENCY,Transplanted organ and tissue status,0
+D61,1849,"D3_ANAEMIA,D3_OTHERAPLASTICANAEMIA",Oth aplastic anemias and other bone marrow failure syndromes,0
+J15,1831,"ASTHMA_INFECTIONS,ASTHMA_PNEUMONIA,J10_PNEUMOBACT,J10_PNEUMONIA,PULM_INFECTIONS","Bacterial pneumonia, not elsewhere classified",0
+N25,1813,"N14_DISIMPAIRRENTUB,N14_KIDUROTH",Disorders resulting from impaired renal tubular function,0
+R44,1806,,Oth symptoms and signs w general sensations and perceptions,0
+E34,1803,"E4_ENDODIS,E4_ENDOGLAND",Other endocrine disorders,0
+J12,1791,"J10_PNEUMONIA,J10_VIRALPNEUMO","Viral pneumonia, not elsewhere classified",0
+J00,1778,"J10_COLD,J10_UPPERINFEC",Acute nasopharyngitis [common cold],1
+M80,1775,M13_OSTEOPOROSIS,Osteoporosis with current pathological fracture,0
+I72,1775,I9_OTHANEUR,Other aneurysm,0
+B36,1774,"AB1_MYCOSES,AB1_OTHER_SUPERF_MYCOSIS",Other superficial mycoses,0
+J35,1773,J10_CHRONTONSADEN,Chronic diseases of tonsils and adenoids,0
+L89,1773,"L12_DECUBITANSULCERANDPRESSURE,L12_OTHERSKINSUBCUTIS",Pressure ulcer,0
+T88,1772,,"Oth complications of surgical and medical care, NEC",0
+E80,1765,"E4_METABOLIA,E4_PORBILIR",Disorders of porphyrin and bilirubin metabolism,0
+G35,1764,"AUTOIMMUNE,AUTOIMMUNE_NONTHYROID,G6_MS,ILD_ENDPOINTS",Multiple sclerosis,0
+T63,1761,,Toxic effect of contact with venomous animals and plants,0
+K60,1755,K11_FISTULA,Fissure and fistula of anal and rectal regions,0
+M40,1746,M13_DEFORMDORSO,Kyphosis and lordosis,0
+C34,1742,,Malignant neoplasm of bronchus and lung,0
+O34,1741,"O15_MATERN_CARE,O15_MATERN_CARE_PELVIC_ABNORM",Maternal care for abnormality of pelvic organs,0
+J39,1719,J10_VOCALLARYNX,Other diseases of upper respiratory tract,0
+I05,1708,"AUTOIMMUNE,AUTOIMMUNE_NONTHYROID,I9_RHEUFEV,I9_RHEUVALV",Rheumatic mitral valve diseases,0
+J04,1694,"J10_LARYNGITIS,J10_UPPERINFEC",Acute laryngitis and tracheitis,0
+A69,1686,AB1_OTHER_SPIROCHAETAL,Other spirochetal infections,0
+R57,1676,,"Shock, not elsewhere classified",0
+Q21,1669,"CONGEN_HEART_ARTER,Q17_VACTREL",Congenital malformations of cardiac septa,0
+N97,1667,"N14_FEMALEGENNONINF,N14_FEMALEINFERT",Female infertility,0
+J93,1664,"J10_PLEURA,J10_PNEUMOTHORAX",Pneumothorax and air leak,0
+F06,1649,F5_MENTORG,Other mental disorders due to known physiological condition,0
+A60,1640,AB1_ANOGENITAL_HERPES_SIMPLEX,Anogenital herpesviral [herpes simplex] infections,0
+Y99,1640,,External cause status,0
+M11,1633,M13_CRYSTALARTH,Other crystal arthropathies,0
+J22,1632,"ASTHMA_ACUTE_RESPIRATORY_INFECTIONS,ASTHMA_INFECTIONS,BRONCHITIS,J10_ACUTELOWERNAS,J10_LOWERINF,PULM_INFECTIONS",Unspecified acute lower respiratory infection,1
+C18,1629,,Malignant neoplasm of colon,0
+F52,1615,"F5_BEHAVE,F5_SEXDYS",Sexual dysfnct not due to a substance or known physiol cond,0
+N88,1610,N14_OTHNONINFCERVIX,Other noninflammatory disorders of cervix uteri,0
+Z33,1610,,Pregnant state,0
+O36,1604,"O15_MATERN_CARE,O15_MATERN_CARE_OTHER",Maternal care for other fetal problems,0
+J95,1597,"J10_PLEURA,J10_RESPOTHER","Intraop and postproc comp and disorders of resp sys, NEC",0
+F42,1583,"F5_ALLANXIOUS,F5_OCD",Obsessive-compulsive disorder,0
+I86,1576,"I9_DISVEINLYMPH,I9_VARICVESOTH",Varicose veins of other sites,0
+N87,1572,N14_FEMALE_GENITAL_DYSPLASIA_ALL,Dysplasia of cervix uteri,0
+G24,1556,G6_DYSTON,Dystonia,0
+S51,1554,,Open wound of elbow and forearm,0
+M1A,1553,,Chronic gout,0
+D24,1553,CD2_BENIGN_BREAST,Benign neoplasm of breast,0
+B99,1549,AB1_OTHER_INFECTIONS,Other and unspecified infectious diseases,0
+D80,1547,"D3_IMMUDEF,D3_IMMUDEFANTIBODY,D3_IMMUNEMECHANISM",Immunodeficiency with predominantly antibody defects,0
+N48,1543,"N14_MALEGEN,N14_OTHPENIS",Other disorders of penis,0
+M95,1537,"M13_DEFORMACQ,M13_MUSCULOSKELEOTH",Oth acquired deformities of ms sys and connective tissue,0
+G54,1533,,Nerve root and plexus disorders,0
+M05,1529,"AUTOIMMUNE,AUTOIMMUNE_NONTHYROID,M13_POLYARTHROPATHIES,M13_RHEUMA,RHEUMA_SEROPOS_WIDE",Rheumatoid arthritis with rheumatoid factor,0
+F50,1526,"F5_BEHAVE,F5_EATOTH",Eating disorders,0
+F14,1518,"F5_COCAINE,F5_SUBSNOALCO",Cocaine related disorders,0
+I24,1516,"I9_CORATHER,I9_IHD",Other acute ischemic heart diseases,0
+C73,1499,,Malignant neoplasm of thyroid gland,1
+L76,1495,,"Intraop and postprocedural complications of skin, subcu",0
+K55,1492,"K11_INTESTOTH,K11_VASCINT",Vascular disorders of intestine,0
+S13,1484,,Dislocation and sprain of joints and ligaments at neck level,0
+D21,1483,CD2_BENIGN_CONNECTIVE_SOFT,Other benign neoplasms of connective and other soft tissue,0
+G50,1474,,Disorders of trigeminal nerve,0
+G51,1474,G6_FACOTH,Facial nerve disorders,0
+N41,1466,"N14_MALEGEN,N14_PROSTATITIS",Inflammatory diseases of prostate,0
+J42,1465,J10_BRONCHNAS,Unspecified chronic bronchitis,1
+N10,1464,N14_PYELONEPHR,Acute pyelonephritis,1
+F03,1445,"F5_DEMENTIA,F5_DEMENTIA_INCLAVO,F5_DEMNAS,KRA_PSY_ANYMENTAL",Unspecified dementia,0
+H31,1433,,Other disorders of choroid,0
+M32,1426,"AUTOIMMUNE,AUTOIMMUNE_NONTHYROID,ILD_ENDPOINTS,M13_SYSTCONNECT,SLE_FG",Systemic lupus erythematosus (SLE),0
+G92,1422,G6_ENCEPHTOX,Toxic encephalopathy,0
+N99,1418,N14_GENITOUROTH,"Intraop and postproc comp and disorders of GU sys, NEC",0
+K27,1413,"K11_GASTRODUOULC,K11_PULC","Peptic ulcer, site unspecified",0
+T50,1387,,Diuretics and oth and unsp drug/meds/biol subst,0
+L27,1383,"L12_DERMATITISECZEMA,L12_INTERNALSUBSTANCEDERM",Dermatitis due to substances taken internally,0
+K70,1380,"AUD_SWEDISH,CIRRHOSIS_BROAD,K11_ALCOLIV",Alcoholic liver disease,0
+J03,1379,"ASTHMA_ACUTE_RESPIRATORY_INFECTIONS,ASTHMA_INFECTIONS,J10_TONSILLITIS,J10_UPPERINFEC,PULM_INFECTIONS",Acute tonsillitis,0
+C78,1371,,Secondary malignant neoplasm of resp and digestive organs,0
+G20,1355,G6_PARKINSON,Parkinson's disease,0
+Z89,1345,,Acquired absence of limb,0
+E56,1339,,Other vitamin deficiencies,0
+S19,1338,,Other specified and unspecified injuries of neck,0
+K46,1334,"ABDOM_HERNIA,ABDOM_HERNIA_POSTOP,K11_OTHABDHER",Unspecified abdominal hernia,0
+Z22,1329,,Carrier of infectious disease,0
+C85,1325,CD2_NONHODGKIN_NAS_EXALLC,Oth and unspecified types of non-Hodgkin lymphoma,0
+E22,1322,E4_HYPERPIT,Hyperfunction of pituitary gland,0
+E23,1316,E4_ENDOGLAND,Hypofunction and other disorders of the pituitary gland,0
+K65,1302,"K11_PERITON,K11_PERITONITIS",Peritonitis,0
+O20,1298,O15_HAEMORRH_EARLY_PREG,Hemorrhage in early pregnancy,0
+F07,1298,F5_PERSBEHORG,Personality & behavrl disorders due to known physiol cond,0
+S73,1295,,Dislocation and sprain of joint and ligaments of hip,0
+I38,1295,I9_ENDOCARD,"Endocarditis, valve unspecified",1
+N42,1292,"N14_MALEGEN,N14_PROSTAOTH",Other and unspecified disorders of prostate,0
+I97,1292,I9_OTHOTH,"Intraop and postproc comp and disorders of circ sys, NEC",0
+N43,1283,"N14_HYDROCELE,N14_MALEGEN",Hydrocele and spermatocele,0
+L92,1277,L12_GRANULOMATOUSSKIN,Granulomatous disorders of skin and subcutaneous tissue,0
+F99,1276,F5_MENTALUNSPE,"Mental disorder, not otherwise specified",1
+R62,1269,,Lack of expected normal physiol dev in childhood and adults,0
+G81,1261,G6_HEMIPLE,Hemiplegia and hemiparesis,0
+L01,1249,L12_IMPETIGO,Impetigo,0
+R70,1248,,Elev erythro sedim and abnormality of plasma viscosity,0
+J33,1247,"ASTHMA_EOSINOPHIL_SUGG,J10_NASALPOLYP",Nasal polyp,0
+N61,1244,N14_INFLAMMBREAST,Inflammatory disorders of breast,0
+A63,1236,AB1_SEXUAL_TRANSMISSION_NOS,"Oth predominantly sexually transmitted diseases, NEC",0
+G58,1229,,Other mononeuropathies,0
+H83,1227,,Other diseases of inner ear,0
+I99,1210,I9_OTHOTH,Other and unspecified disorders of circulatory system,0
+D13,1201,CD2_BENIGN_OTHERDIGESTIVE,Benign neoplasm of and ill-defined parts of digestive system,0
+C67,1196,,Malignant neoplasm of bladder,0
+M00,1181,M13_PYOGARTH,Pyogenic arthritis,0
+E79,1174,E4_METABOLIA,Disorders of purine and pyrimidine metabolism,0
+I37,1160,"FG_CVD,FG_OTHHEART,I9_VHD",Nonrheumatic pulmonary valve disorders,0
+D03,1156,CD2_INSITU_MELANOMA_EXALLC,Melanoma in situ,0
+S33,1151,,Disloc & sprain of joints & ligaments of lumbar spin & pelv,0
+L68,1146,L12_DISORDSKINAPPENDIX,Hypertrichosis,0
+L56,1145,L12_OTHACUSKINSUN,Other acute skin changes due to ultraviolet radiation,0
+K35,1142,"APPENDACUT_NOCOMPLIC,K11_APPENDACUT",Acute appendicitis,0
+K72,1139,K11_HEPFAIL,"Hepatic failure, not elsewhere classified",0
+T86,1132,,Complications of transplanted organs and tissue,0
+N72,1131,N14_INFCERVIX,Inflammatory disease of cervix uteri,1
+Q43,1129,Q17_OTHER_CONGEN_MALFO_INTESTINE,Other congenital malformations of intestine,0
+M87,1111,M13_OSTEONECROSIS,Osteonecrosis,0
+S31,1111,,"Opn wnd abdomen, lower back, pelvis and external genitals",0
+Z48,1109,,Encounter for other postprocedural aftercare,0
+C64,1102,,"Malignant neoplasm of kidney, except renal pelvis",0
+N36,1098,N14_URETHRAOTH,Other disorders of urethra,0
+T17,1098,,Foreign body in respiratory tract,0
+H17,1090,"H7_CORNEALSCAR,H7_KERATITIS,H7_SCLERACORNEA",Corneal scars and opacities,0
+O48,1084,"O15_MATERN_CARE,O15_PREG_PROLONGED",Late pregnancy,0
+E73,1079,E4_METABOLIA,Lactose intolerance,0
+K26,1075,"K11_DULC,K11_GASTRODUOULC",Duodenal ulcer,0
+Z16,1069,,Resistance to antimicrobial drugs,0
+F09,1064,F5_UNSORG,Unsp mental disorder due to known physiological condition,1
+N73,1060,N14_OTHFEMPELINF,Other female pelvic inflammatory diseases,0
+N23,1054,N14_RENALCOLNAS,Unspecified renal colic,1
+K06,1051,,Other disorders of gingiva and edentulous alveolar ridge,0
+M60,1049,"M13_MUSCLE,M13_MYOSITIS",Myositis,0
+Z71,1044,,"Persons encntr health serv for oth cnsl and med advice, NEC",0
+D32,1036,CD2_BENIGN_MENINGES,Benign neoplasm of meninges,0
+O03,1017,O15_ABORT_SPONTAN,Spontaneous abortion,0
+T07,1016,,Unspecified multiple injuries,0
+S59,1016,,Other and unspecified injuries of elbow and forearm,0
+F13,1006,"F5_SEDAHYP,F5_SUBSNOALCO","Sedative, hypnotic, or anxiolytic related disorders",0
+Q79,1005,Q17_CONGEN_MALFO_MUSCULOS_SYSTEM_NOT_ELSEW_CLASSIFIED,"Congenital malformations of musculoskeletal system, NEC",0
+F29,1001,F5_PSYCHOTH,Unsp psychosis not due to a substance or known physiol cond,1
+S41,995,,Open wound of shoulder and upper arm,0
+T75,983,,Other and unspecified effects of other external causes,0
+F20,975,F5_SCHZPHR,Schizophrenia,0
+J41,956,J10_SIMPLBRONCH,Simple and mucopurulent chronic bronchitis,0
+N19,955,"N14_RENFAIL,N14_RENFAILNAS",Unspecified kidney failure,1
+O24,953,,"Diabetes in pregnancy, childbirth, and the puerperium",0
+H20,951,H7_IRIDOCYCLITIS,Iridocyclitis,0
+T40,945,,Narcotics and psychodysleptics,0
+B30,939,AB1_VIRAAL_CONJUNCT,Viral conjunctivitis,0
+H72,936,H8_PERFORATION,Perforation of tympanic membrane,0
+Z93,934,,Artificial opening status,0
+T80,934,,"Comp following infusion, transfusion and theraputc injection",0
+O35,932,"O15_MATERN_CARE,O15_MATERN_CARE_FETAL_ABNORM",Maternal care for known or suspected fetal abnlt and damage,0
+F05,924,F5_DELIRIUM,Delirium due to known physiological condition,1
+M27,913,,Other diseases of jaws,0
+F54,900,"F5_BEHAVE,F5_PHYSBEHOTH",Psych & behavrl factors assoc w disord or dis classd elswhr,1
+F25,889,F5_SCHIZOAFF,Schizoaffective disorders,0
+Z73,886,,Problems related to life management difficulty,0
+F44,885,F5_DISSOCIATIVE,Dissociative and conversion disorders,0
+N45,881,"N14_MALEGEN,N14_ORHCEPINDIDYMITIS",Orchitis and epididymitis,0
+E74,880,E4_METABOLIA,Other disorders of carbohydrate metabolism,0
+Q61,876,"Q17_CONGEN_MALFO_URINARY_SYSTEM,Q17_CYSTIC_KIDNEY_DISEA,Q17_VACTREL",Cystic kidney disease,0
+H21,874,H7_OTHIRISCILIARY,Other disorders of iris and ciliary body,0
+I74,871,"I9_ARTEMBTHR,I9_ARTEMBTHRNAS",Arterial embolism and thrombosis,0
+D09,870,,Carcinoma in situ of other and unspecified sites,0
+H34,867,"H7_RETINALDETACH,H7_RETIVASCOCCLUSION",Retinal vascular occlusions,0
+L64,866,"L12_ALOPECANDRO,L12_DISORDSKINAPPENDIX",Androgenic alopecia,0
+F02,862,"F5_DEMENTIA,F5_DEMENTIA_INCLAVO,F5_DEMINOTH,KRA_PSY_ANYMENTAL",Dementia in other diseases classified elsewhere,0
+D73,858,"D3_BLOODOTHER,D3_SPLEENDISEASE",Diseases of spleen,0
+T16,858,,Foreign body in ear,0
+C54,858,,Malignant neoplasm of corpus uteri,0
+C91,855,CD2_LYMPHOID_LEUKAEMIA_EXALLC,Lymphoid leukemia,0
+O21,853,O15_EXCESS_VOMIT_PREG,Excessive vomiting in pregnancy,0
+G72,852,,Other and unspecified myopathies,0
+R46,848,,Symptoms and signs involving appearance and behavior,0
+H44,844,,Disorders of globe,0
+Q24,842,"CONGEN_HEART_ARTER,Q17_OTHER_CONGEN_MALFO_HEART,Q17_VACTREL",Other congenital malformations of heart,0
+E63,840,,Other nutritional deficiencies,0
+B20,839,AB1_HIV_INFECT_PARASITES,Human immunodeficiency virus [HIV] disease,1
+Q23,829,"CONGEN_HEART_ARTER,Q17_VACTREL",Congenital malformations of aortic and mitral valves,0
+Z88,824,,Allergy status to drug/meds/biol subst,0
+L74,823,L12_ECCRINESWEAT,Eccrine sweat disorders,0
+G70,820,,Myasthenia gravis and other myoneural disorders,0
+I85,817,"CIRRHOSIS_BROAD,I9_DISVEINLYMPH,I9_VARICVEOES",Esophageal varices,0
+D86,811,"D3_IMMUNEMECHANISM,D3_SARCOIDOSIS",Sarcoidosis,0
+C76,803,,Malignant neoplasm of other and ill-defined sites,0
+E72,792,"E4_AMINO,E4_METABOLIA",Other disorders of amino-acid metabolism,0
+E65,791,E4_LOCALADIP,Localized adiposity,1
+T18,789,,Foreign body in alimentary tract,0
+R54,789,,Age-related physical debility,1
+J94,788,"J10_PLEURA,J10_PLEUROTH",Other pleural conditions,0
+J91,787,"J10_PLEURA,J10_PLEUREFFUSION",Pleural effusion in conditions classified elsewhere,0
+K94,783,,Complications of artificial openings of the digestive system,0
+T79,781,,"Certain early complications of trauma, NEC",0
+W19,774,FALLS,Unspecified fall,0
+S96,773,,Injury of muscle and tendon at ankle and foot level,0
+D37,772,,Neoplasm of uncrt behavior of oral cavity and dgstv organs,0
+C83,769,CD2_NONFOLLICULAR_LYMPHOMA_EXALLC,Non-follicular lymphoma,0
+I46,759,I9_CARDARR,Cardiac arrest,0
+S66,758,,"Injury of muscle, fascia and tendon at wrist and hand level",0
+H05,748,H7_ORBIT,Disorders of orbit,0
+G96,746,G6_CNSOTH,Other disorders of central nervous system,0
+T15,742,,Foreign body on external eye,0
+M31,742,"ILD_ENDPOINTS,M13_SYSTCONNECT",Other necrotizing vasculopathies,0
+Q76,741,"Q17_CONGEN_MALFO_SPINE_BONY_THORAX,Q17_VACTREL",Congenital malformations of spine and bony thorax,0
+N21,739,N14_CALCULOWER,Calculus of lower urinary tract,0
+Z21,733,Z21_ASYMP_HUMAN_IMMUNODEFICIENCY_VIRUS_HIV_INFECTION_STATUS,Asymptomatic human immunodeficiency virus infection status,1
+T30,732,,"Burn and corrosion, body region unspecified",0
+E01,732,,Iodine-deficiency related thyroid disorders and allied cond,0
+Z67,730,,Blood type,0
+Z14,726,,Genetic carrier,0
+I62,719,"BLEEDING,C_STROKE,I9_OTHINTRACRA",Other and unspecified nontraumatic intracranial hemorrhage,0
+F48,712,F5_NEUROTICOTH,Other nonpsychotic mental disorders,0
+G83,711,,Other paralytic syndromes,0
+G37,705,"AUTOIMMUNE,AUTOIMMUNE_NONTHYROID,G6_OTHDEMYEL",Other demyelinating diseases of central nervous system,0
+N35,702,N14_URETHRALSTRICT,Urethral stricture,0
+I96,698,,"Gangrene, not elsewhere classified",1
+O02,697,O15_CONCEPT_ABNORM,Other abnormal products of conception,0
+L43,696,K11_LICHEN_PLANUS_WIDE,Lichen planus,0
+S79,693,,Other and unspecified injuries of hip and thigh,0
+M66,684,"M13_SPONTRUPTSYNOTEND,M13_SYNOTEND",Spontaneous rupture of synovium and tendon,0
+I61,677,"BLEEDING,C_STROKE,I9_CVD_HARD,I9_ICH,I9_INTRACRA,I9_STR",Nontraumatic intracerebral hemorrhage,0
+N34,666,N14_URETHRITISANDURSYNDR,Urethritis and urethral syndrome,0
+B01,665,"AB1_VARICELLA,AB1_VIRAL_SKIN_MUCOUS_MEMBRANE",Varicella [chickenpox],0
+O28,661,O15_ANTENAT_ABNORM,Abnormal findings on antenatal screening of mother,0
+N26,652,"N14_KIDUROTH,N14_UNSPECKIDCONTR",Unspecified contracted kidney,0
+G63,647,,Polyneuropathy in diseases classified elsewhere,1
+C90,645,CD2_MULTIPLE_MYELOMA_PLASMA_CELL_EXALLC,Multiple myeloma and malignant plasma cell neoplasms,0
+D58,645,"D3_ANAEMIA,D3_HAEMOLYTICANAEMIA",Other hereditary hemolytic anemias,0
+H51,644,"H7_BINOCUMOVOTH,H7_OCUMUSCLE",Other disorders of binocular movement,0
+E67,641,E4_HYPERALI,Other hyperalimentation,0
+J21,641,"ASTHMA_ACUTE_RESPIRATORY_INFECTIONS,ASTHMA_INFECTIONS,BRONCHITIS,J10_BRONCHIOLITIS,J10_LOWERINF,PULM_INFECTIONS",Acute bronchiolitis,0
+C49,635,,Malignant neoplasm of other connective and soft tissue,0
+K61,630,K11_ABSCANAL,Abscess of anal and rectal regions,0
+D33,630,CD2_BENIGN_BRAIN_CNS,Benign neoplasm of brain and oth prt central nervous system,0
+M45,628,"ILD_ENDPOINTS,M13_ANKYLOSPON,M13_SPONDYLOPATHY,SPONDYLOARTHRITIS,SPONDYLOPATHY_FG",Ankylosing spondylitis,0
+C56,626,,Malignant neoplasm of ovary,0
+F22,624,F5_DELUSIO,Delusional disorders,1
+H49,623,"H7_OCUMUSCLE,H7_PARASTRAB",Paralytic strabismus,0
+H46,623,"H7_OPTNERVE,H7_OPTNEURITIS",Optic neuritis,0
+D07,617,,Carcinoma in situ of other and unspecified genital organs,0
+N65,607,,Deformity and disproportion of reconstructed breast,0
+O16,604,"O15_HYPTENSPREG,O15_MATERN_HYPERT_UNS",Unspecified maternal hypertension,0
+G30,603,"G6_ALZHEIMER,G6_NEURODEGENERATIVE",Alzheimer's disease,0
+W45,602,,Foreign body or object entering through skin,0
+O13,599,"O15_GESTAT_HYPERT,O15_HYPTENSPREG",Gestational hypertension without significant proteinuria,0
+S10,592,,Superficial injury of neck,0
+H55,584,"H7_EYEOTH,H7_NYSTAGMUS",Nystagmus and other irregular eye movements,0
+D27,582,CD2_BENIGN_OVARY,Benign neoplasm of ovary,0
+H74,581,,Other disorders of middle ear mastoid,0
+Q27,581,Q17_OTHER_CONGEN_MALFO_PERIP_VASCULAR_SYSTEM,Other congenital malformations of peripheral vascular system,0
+S12,578,ST19_FRACT_NECK,Fracture of cervical vertebra and other parts of neck,0
+I88,578,"I9_DISVEINLYMPH,I9_LYMPHADE",Nonspecific lymphadenitis,0
+R64,577,,Cachexia,1
+B86,569,"AB1_PEDICULOSIS_ACARIASIS_OTHERINFEST,AB1_SCABIES",Scabies,1
+S27,567,,Injury of other and unspecified intrathoracic organs,0
+J92,563,"J10_PLEURA,J10_PLEURPLAGUE",Pleural plaque,0
+G97,561,G6_POSTOPNEURO,"Intraop and postproc comp and disorders of nervous sys, NEC",0
+G61,560,,Inflammatory polyneuropathy,0
+T23,559,,Burn and corrosion of wrist and hand,0
+D16,548,CD2_BENIGN_BONE_CARTILAGE,Benign neoplasm of bone and articular cartilage,0
+G82,546,,Paraplegia (paraparesis) and quadriplegia (quadriparesis),0
+C25,546,,Malignant neoplasm of pancreas,0
+I60,539,"BLEEDING,C_STROKE,I9_INTRACRA,I9_SAH,I9_SAHANEUR",Nontraumatic subarachnoid hemorrhage,0
+S23,538,,Dislocation and sprain of joints and ligaments of thorax,0
+D3A,531,,Benign neuroendocrine tumors,0
+O92,530,O15_BREAST_LACT_OTHER_DIS,Oth disord of brst/lactatn assoc w pregnancy and the puerp,0
+Y95,528,,Nosocomial condition,1
+J37,525,J10_CHRONLARYNGITIS,Chronic laryngitis and laryngotracheitis,0
+T42,523,,"Antiepileptic, sedative- hypnotic and antiparkinsonism drugs",0
+T43,523,,"Psychotropic drugs, not elsewhere classified",0
+C22,521,,Malignant neoplasm of liver and intrahepatic bile ducts,0
+B27,516,"AB1_EBV,AB1_OTHER_VIRAL",Infectious mononucleosis,0
+L67,512,"L12_DISORDSKINAPPENDIX,L12_HAIRCOLOUR",Hair color and hair shaft abnormalities,0
+L05,510,L12_PILONIDALCYST,Pilonidal cyst and sinus,0
+H27,509,,Other disorders of lens,0
+L80,508,"AUTOIMMUNE,AUTOIMMUNE_NONTHYROID,L12_OTHERSKINSUBCUTIS,L12_VITILIGO",Vitiligo,1
+L11,506,L12_ACANTHOLYTIC,Other acantholytic disorders,0
+O98,503,O15_MATERN_INFECT_ELSEWHERE,Matern infec/parastc dis classd elsw but compl preg/chldbrth,0
+R36,500,,Urethral discharge,0

@@ -1,0 +1,207 @@
+---
+title: "binary trait in UKBB with different effective sample size"
+output: html_document
+date: "2025-09-21"
+---
+
+```{r}
+library(readr)
+library(dplyr)
+
+# read common models #
+ukbb_report <- read_csv(file.path("../result", "ensembleprs", "ukb_ensembleprs_overall_overlaptraits.csv"), show_col_types = FALSE)
+breaks_round <- c(-Inf, 1000, 2000, 3500, 6000, Inf)
+ukbb_result <- ukbb_report %>% mutate(case_bin = as.integer(cut(ensemble_case_num, breaks = breaks_round, right = FALSE)))
+
+# iterate all case bins #
+output_dir <- file.path("../result", "spectral_ranking", "temp_file")
+for (bin in unique(ukbb_result$case_bin)) {
+  temp_result <- ukbb_result %>% filter(case_bin == bin)
+
+  # save matrix #
+  # Idx = c("glm", "superlearner", "tabpfn", "autogluon", "unsemble", "single", "all_prs")
+  Idx <- c("glm", "superlearner", "tabpfn", "autogluon", "best_all_single", "all_prs")
+  numidx <- length(Idx)
+  xx <- matrix(0, 0, numidx)
+  ww <- matrix(0, 0, numidx)
+  count <- 0
+
+  for (i in 1:nrow(temp_result)) {
+    target_row <- temp_result[i, ]
+
+    ukbb_list <- c(
+      target_row$glm,
+      target_row$superlearner,
+      target_row$tabpfn,
+      target_row$autogluon,
+      # target_row$unsemble,
+      target_row$best_all_single,
+      target_row$all_prs
+    )
+    if (any(is.na(ukbb_list))) next
+    count <- count + 1
+
+    for (j in 1:(length(ukbb_list) - 1)) {
+      for (k in (j + 1):length(ukbb_list)) {
+        tmp.xx <- numeric(numidx)
+        tmp.ww <- numeric(numidx)
+
+        if (ukbb_list[j] > ukbb_list[k]) {
+          tmp.v1 <- Idx[k]
+          tmp.v2 <- Idx[j]
+        } else {
+          tmp.v2 <- Idx[k]
+          tmp.v1 <- Idx[j]
+        }
+
+        tmp.xx[Idx == tmp.v1] <- 1
+        tmp.xx[Idx == tmp.v2] <- 1
+        tmp.ww[Idx == tmp.v2] <- 1
+
+        xx <- rbind(xx, tmp.xx)
+        ww <- rbind(ww, tmp.ww)
+      }
+    }
+  }
+  cat("Bin: ", bin, "Num of traits: ", count, "\n")
+  yy <- matrix(c(xx), ncol = numidx)
+  zz <- matrix(c(ww), ncol = numidx)
+
+  write.table(yy, file = file.path(output_dir, paste0("ukbb_binary_ranking_AA_", bin)))
+  write.table(Idx, file = file.path(output_dir, paste0("ukbb_binary_ranking_method_", bin)))
+  write.table(zz, file = file.path(output_dir, paste0("ukbb_binary_ranking_WW_", bin)))
+}
+```
+
+
+```{r}
+# calculate ranking result #
+all_bins_df <- data.frame()
+
+for (bin in unique(ukbb_result$case_bin)) {
+  AA0 <- read.table(file.path(output_dir, paste0("ukbb_binary_ranking_AA_", bin)))
+  AA2 <- as.matrix(AA0)
+  IdxJournal <- read.table(file.path(output_dir, paste0("ukbb_binary_ranking_method_", bin)))
+  WW0 <- read.table(file.path(output_dir, paste0("ukbb_binary_ranking_WW_", bin)))
+  WW2 <- as.matrix(WW0)
+
+  B <- 2000
+  n <- ncol(AA2)
+  L2 <- nrow(AA2)
+  fAvec2 <- numeric(L2) + 2 ## weight for vanilla spectral method ##
+
+  dval2 <- 2 * max(colSums(AA2)) ## value of d ##
+  P2 <- matrix(0, n, n)
+  for (i in 1:n) {
+    for (j in 1:n) {
+      if (j != i) {
+        P2[i, j] <- sum(AA2[, i] * AA2[, j] * WW2[, j] / fAvec2) / dval2
+      }
+    }
+    P2[i, i] <- 1 - sum(P2[i, ])
+  }
+
+  tmp.P2 <- t(t(P2) - diag(n)) %*% (t(P2) - diag(n))
+  tmp.svd2 <- svd(tmp.P2)
+  pihat2 <- abs(tmp.svd2$v[, n])
+  thetahat2 <- log(pihat2) - mean(log(pihat2))
+
+  RR2 <- matrix(0, 6, n)
+  # colnames(RR2) <- c("GLM", "Superlearner", "TabPFN", "Autogluon", "UNSemblePRS", "BestSingle")
+  colnames(RR2) <- c("GLM", "Superlearner", "TabPFN", "Autogluon", "BestSingle", "AllPRS")
+  RR2[1, ] <- thetahat2
+  RR2[2, ] <- n + 1 - rank(thetahat2)
+
+  Vmatrix2 <- matrix(0, L2, n)
+  tauhatvec2 <- numeric(n)
+  tmp.pimatrix2 <- t(AA2) * pihat2
+  tmp.pivec2 <- colSums(tmp.pimatrix2)
+  tmp.var2 <- numeric(n)
+  for (oo in 1:n) {
+    tauhatvec2[oo] <- sum(AA2[, oo] * (1 - pihat2[oo] / tmp.pivec2) * pihat2[oo] / fAvec2, na.rm = TRUE) / dval2
+    tmp.var2[oo] <- sum(AA2[, oo] * (tmp.pivec2 - pihat2[oo]) / fAvec2 / fAvec2) * pihat2[oo] / dval2 / dval2 / tauhatvec2[oo] / tauhatvec2[oo]
+    Vmatrix2[, oo] <- (AA2[, oo] * WW2[, oo] * tmp.pivec2 - AA2[, oo] * pihat2[oo]) / fAvec2
+  }
+  sigmahatmatrix2 <- matrix(tmp.var2, n, n) + t(matrix(tmp.var2, n, n))
+
+  Wmatrix2 <- matrix(rnorm(L2 * B), L2, B)
+  tmp.Vtau2 <- (t(Vmatrix2) / tauhatvec2) %*% Wmatrix2
+
+  R.left.m2 <- numeric(n)
+  R.right.m2 <- numeric(n)
+  R.left.one.m2 <- numeric(n)
+
+  for (ooo in 1:n) {
+    tmpGMmatrix02 <- matrix(rep(tmp.Vtau2[ooo, ], n) - c(t(tmp.Vtau2)), B, n)
+    tmpGMmatrix2 <- abs(t(t(tmpGMmatrix02) / sqrt(sigmahatmatrix2[ooo, ])) / dval2)
+    tmpGMmatrixone2 <- t(t(tmpGMmatrix02) / sqrt(sigmahatmatrix2[ooo, ])) / dval2
+    tmp.GMvecmax2 <- apply(tmpGMmatrix2, 1, max)
+    tmp.GMvecmaxone2 <- apply(tmpGMmatrixone2, 1, max)
+    cutval2 <- quantile(tmp.GMvecmax2, 0.95)
+    cutvalone2 <- quantile(tmp.GMvecmaxone2, 0.95)
+    tmp.theta.sd2 <- sqrt(sigmahatmatrix2[ooo, ])
+    tmp.theta.sd2 <- tmp.theta.sd2[-ooo]
+    R.left.m2[ooo] <- 1 + sum(1 * (((thetahat2[-ooo] - thetahat2[ooo]) / tmp.theta.sd2) > cutval2))
+    R.right.m2[ooo] <- n - sum(1 * (((thetahat2[-ooo] - thetahat2[ooo]) / tmp.theta.sd2) < (-cutval2)))
+    R.left.one.m2[ooo] <- 1 + sum(1 * (((thetahat2[-ooo] - thetahat2[ooo]) / tmp.theta.sd2) > cutvalone2))
+  }
+
+  RR2[3, ] <- R.left.m2
+  RR2[4, ] <- R.right.m2
+  RR2[5, ] <- R.left.one.m2
+
+  Wmatrix2 <- matrix(rnorm(L2 * B), L2, B)
+  tmp.Vtau2 <- (t(Vmatrix2) / tauhatvec2) %*% Wmatrix2
+  Mval <- n
+  GMvecmax2 <- numeric(B) - 1
+  GMvecmaxone2 <- numeric(B) - Inf
+  tmpTMval2 <- -1
+  tmpTMvalone2 <- -Inf
+
+  for (ooo in 1:n) {
+    tmpGMmatrix02 <- matrix(rep(tmp.Vtau2[ooo, ], n) - c(t(tmp.Vtau2)), B, n)
+    tmpGMmatrix2 <- abs(t(t(tmpGMmatrix02) / sqrt(sigmahatmatrix2[ooo, ])) / dval2)
+    tmpGMmatrixone2 <- t(t(tmpGMmatrix02) / sqrt(sigmahatmatrix2[ooo, ])) / dval2
+    tmp.GMvecmax2 <- apply(tmpGMmatrix2, 1, max)
+    tmp.GMvecmaxone2 <- apply(tmpGMmatrixone2, 1, max)
+    GMvecmax2 <- c(GMvecmax2, tmp.GMvecmax2)
+    GMvecmaxone2 <- c(GMvecmaxone2, tmp.GMvecmaxone2)
+  }
+
+  GMmaxmatrixone2 <- matrix(GMvecmaxone2, B)
+  GMmaxone2 <- apply(GMmaxmatrixone2, 1, max)
+  cutvalone2 <- quantile(GMmaxone2, 0.95)
+
+  R.left.one2 <- numeric(n)
+  for (oooo in 1:n) {
+    tmp.theta.sd2 <- sqrt(sigmahatmatrix2[oooo, ])
+    tmp.theta.sd2 <- tmp.theta.sd2[-oooo]
+    R.left.one2[oooo] <- 1 + sum(1 * (((thetahat2[-oooo] - thetahat2[oooo]) / tmp.theta.sd2) > cutvalone2))
+  }
+  RR2[6, ] <- R.left.one2 ## uniform left-sided CI for rank ##
+  cat("Bin = ", bin, "\n")
+  print(RR2)
+
+  # append result for this case bin #
+  methods <- colnames(RR2)
+  rank <- RR2[2, ]
+  lower <- RR2[3, ]
+  upper <- RR2[4, ]
+
+  df <- data.frame(
+    method = methods,
+    rank = as.numeric(rank),
+    lower = as.numeric(lower),
+    upper = as.numeric(upper),
+    bin = bin
+  )
+  all_bins_df <- bind_rows(all_bins_df, df)
+}
+
+result_path <- file.path("../result", "spectral_ranking", "ukb_5bin.csv")
+write.csv(all_bins_df, file = result_path, row.names = FALSE)
+```
+
+
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

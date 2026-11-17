@@ -32,14 +32,14 @@ with col2:
 
 st.markdown(
     """
-This site provides public access to summary-level results from our systematic
+This site provides public access to our 
 evaluation of **cross-disease polygenic risk score (PRS) performance and transferability** across
 diseases, biobanks, and ancestry groups.
 
 We constructed a comprehensive PRS library from publicly available 
 genome-wide association study (GWAS) summary statistics from **FinnGen** and 
 **Million Veteran Program (MVP)** using the pseudo-training framework implemented in **PennPRS**.
-We then systematically evaluated the predictive performance of these PRSs across a broad range of target diseases in the
+We then evaluated the predictive performance of these PRSs across a broad range of target diseases in the
 **All of Us Research Program (AoU)** and the **UK Biobank (UKB)**.
 
 Researchers can use this resource to:
@@ -120,14 +120,16 @@ st.subheader("Update Log")
 
 st.markdown(
     """
+**November 2026**
+- Updated cross-disease ensemble PRS database.
+- Updated about and download page, modified layout for search engine page.
+
 **September 2026**
-- Initial release of the cross-disease ensemble PRS database.
+- Initial release of the ensemble PRS database.
 - Added interactive cross-disease ensemble PRS search.
 - Updated about and download page, modified layout for search engine page.
 
 **July 2026**
 - Initial release of the cross-disease PRS database.
-- Added interactive PRS ranking search across biobanks and ancestries.
-- Released the complete cross-disease PRS ranking database.
 """
 )

@@ -13,7 +13,7 @@ apply_custom_css()
 
 APP_DIR = Path(__file__).parent.resolve()
 DATA_DIR = APP_DIR.parent / "data"                                  # web_tool/data, shared by all pages
-RANKING_PATH = DATA_DIR / "prs_cross_disease_ranking.parquet"
+RANKING_PATH = DATA_DIR / "prs_landscape.parquet"
 ENSEMBLE_PATH = DATA_DIR / "prs_ensemble_performance.parquet"
 
 
@@ -181,6 +181,7 @@ with col3:
         disabled=(biobank is None or ancestry is None)
     )
 
+
 if st.button("Search"):
     if target_icd is None or biobank is None or ancestry is None:
         st.warning("Please select biobank, ancestry, and target disease ICD-10.")
@@ -228,37 +229,57 @@ if st.button("Search"):
                 ens = pd.DataFrame()
 
             if ancestry == "EUR" and len(ens) > 0:
-                st.markdown("#### Ensemble PRS performance")
-
                 ens = ens.sort_values("insample_ensemble_auc", ascending=False).reset_index(drop=True)
+                
+                # training case count is shared by both evaluations
+                train_n_case = int(ens.loc[0, "train_n_case"])
 
+                st.markdown(f"#### Ensemble PRS performance (trained on {train_n_case:,} cases)")
+
+                # display column names (kept unique, st.dataframe rejects duplicates)
+                col_auc_in = "AUC (AoU, in-sample)"
+                col_dw_in = "Δ vs best within-trait PRS (AoU)"
+                col_dc_in = "Δ vs best candidate PRS (AoU)"
+                col_auc_out = "AUC (UKB, out-of-sample)"
+                col_dw_out = "Δ vs best within-trait PRS (UKB)"
+                col_dc_out = "Δ vs best candidate PRS (UKB)"
+                delta_cols = [col_dw_in, col_dc_in, col_dw_out, col_dc_out]
+
+                # one row per ensemble method, deltas already computed in the parquet
                 ens_panel = pd.DataFrame({
                     "Method": ens["ensemble_method"],
-                    "AUC (in-sample, AoU)": ens["insample_ensemble_auc"],
-                    "Delta (in-sample, ensemble - best single)": ens["insample_delta_vs_single"],
-                    "AUC (out-of-sample, UKB)": ens["outsample_ensemble_auc"],
-                    "Delta (out-of-sample, ensemble - best single)": ens["outsample_delta_vs_single"],
+                    col_auc_in: ens["insample_ensemble_auc"],
+                    col_dw_in: ens["insample_delta_within_single"],
+                    col_dc_in: ens["insample_delta_cross_single"],
+                    col_auc_out: ens["outsample_ensemble_auc"],
+                    col_dw_out: ens["outsample_delta_within_single"],
+                    col_dc_out: ens["outsample_delta_cross_single"],
                 })
 
-                # prepend the single-PRS baseline so the gain is readable in place
-                ens_baseline = pd.DataFrame([{
-                    "Method": "Best single candidate PRS",
-                    "AUC (in-sample, AoU)": ens.loc[0, "insample_bestsingle_auc"],
-                    "Delta (in-sample, ensemble - best single)": pd.NA,
-                    "AUC (out-of-sample, UKB)": ens.loc[0, "outsample_bestsingle_auc"],
-                    "Delta (out-of-sample, ensemble - best single)": pd.NA,
-                }])
-                ens_panel = pd.concat([ens_baseline, ens_panel], ignore_index=True)
+                # prepend the two single-PRS baselines so the gains are readable in place
+                baseline_target_label = "Best target-disease PRS"
+                baseline_cross_label = "Best candidate PRS (any disease)"
+                ens_baseline = pd.DataFrame([
+                    {"Method": baseline_target_label,
+                     col_auc_in: ens.loc[0, "insample_within_single_auc"],
+                     col_auc_out: ens.loc[0, "outsample_within_single_auc"]},
+                    {"Method": baseline_cross_label,
+                     col_auc_in: ens.loc[0, "insample_cross_single_auc"],
+                     col_auc_out: ens.loc[0, "outsample_cross_single_auc"]},
+                ])
+                # concat follows the baseline's column order, so restore the intended order
+                ens_panel = pd.concat([ens_baseline, ens_panel], ignore_index=True)[
+                    ["Method", col_auc_in, col_dw_in, col_dc_in, col_auc_out, col_dw_out, col_dc_out]
+                ]
 
                 # format AUCs to 4 decimals and deltas with an explicit sign
-                for c in ["AUC (in-sample, AoU)", "AUC (out-of-sample, UKB)"]:
+                for c in [col_auc_in, col_auc_out]:
                     ens_panel[c] = ens_panel[c].map(lambda x: f"{x:.4f}" if pd.notna(x) else "")
-                for c in ["Delta (in-sample, ensemble - best single)",
-                          "Delta (out-of-sample, ensemble - best single)"]:
+                for c in delta_cols:
                     ens_panel[c] = ens_panel[c].map(lambda x: f"{x:+.4f}" if pd.notna(x) else "—")
 
-                # highlight the baseline row to separate it from the ensemble methods
-                ens_baseline_mask = ens_panel["Method"] == "Best single candidate PRS"
+                # highlight the baseline rows to separate them from the ensemble methods
+                ens_baseline_mask = ens_panel["Method"].isin([baseline_target_label, baseline_cross_label])
 
                 def highlight_ens_baseline(row):
                     if ens_baseline_mask.loc[row.name]:
@@ -274,9 +295,10 @@ if st.button("Search"):
                 st.dataframe(styled_ens, use_container_width=True, hide_index=True)
 
                 st.caption(
-                    "Ensemble PRSs combine the top 10 candidate cross-disease PRSs for the target disease. "
-                    "In-sample evaluation in All of Us (N = 70,000); out-of-sample evaluation in UK Biobank (N = 224,301). "
-                    "Delta is the AUC difference against the best single cross-disease PRS in the same evaluation. "
+                    "Ensemble PRSs combine the top 10 candidate cross-disease PRSs for the target disease, "
+                    f"trained in All of Us ({train_n_case:,} cases). "
+                    "In-sample evaluation in All of Us (N = 70k); out-of-sample evaluation in UK Biobank (N = 224k). "
+                    "Δ is the AUC difference between the ensemble and the given single-PRS baseline in the same evaluation. "
                     "Available for European ancestry and for diseases evaluated in both biobanks."
                 )
 
@@ -336,4 +358,11 @@ if st.button("Search"):
                 styled_df,
                 use_container_width=True,
                 hide_index=True,
+                column_config={
+                    # render the URL column as a clickable link, showing short text instead of the full URL
+                    "PRS download link": st.column_config.LinkColumn(
+                        "PRS download link",
+                        display_text="Download",
+                    ),
+                },
             )

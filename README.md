@@ -7,9 +7,9 @@ A web-based interface for interactively exploring the cross-trait PRS rankings i
 **[Click to Web-tool](https://crosstraitprs-ensemble-1081501007093.us-east1.run.app/)**
 
 
-The analyses were conducted using data from the [**All of Us Research Program (AoU)**](https://www.researchallofus.org/) and the [**UK Biobank (UKB)**](https://www.ukbiobank.ac.uk/). Individual-level genotype and electronic health record data are available through controlled access via the [All of Us Researcher Workbench](https://www.researchallofus.org/data-tools/workbench/) and the [UKB-RAP](https://www.ukbiobank.ac.uk/use-our-data/research-analysis-platform/), respectively.
+The analyses were conducted using data from the [**All of Us Research Program (AoU)**](https://www.researchallofus.org/) and the [**UK Biobank (UKB)**](https://www.ukbiobank.ac.uk/). Individual-level genotype and electronic health record data are available through controlled access via the [**All of Us Researcher Workbench**](https://www.researchallofus.org/data-tools/workbench/) and the [**UKB-RAP**](https://www.ukbiobank.ac.uk/use-our-data/research-analysis-platform/), respectively.
 
-PRS models were constructed using genome-wide association study (GWAS) summary statistics from [**FinnGen**](https://www.finngen.fi/en) for European-ancestry analyses and the [**Million Veteran Program (MVP)**](https://www.research.va.gov/mvp/) for African-ancestry analyses. The ICD-10-to-Phecode mappings used to harmonize disease phenotypes are based on resources available through the [PheWAS Catalog](https://phewascatalog.org/).
+PRS models were constructed using genome-wide association study (GWAS) summary statistics from [**FinnGen**](https://www.finngen.fi/en) for European-ancestry analyses and the [**Million Veteran Program (MVP)**](https://www.research.va.gov/mvp/) for African-ancestry analyses. The ICD-10-to-Phecode mappings used to harmonize disease phenotypes are based on resources available through the [**PheWAS Catalog**](https://phewascatalog.org/).
 
 ## Overview
 
@@ -42,10 +42,11 @@ The GitHub repository contains the analysis code, publicly shareable reference d
 
 ```text
 CrosstraitPRS_Ensemble/
-├── analysis/      # Analysis and figure-generation scripts
-├── results/       # Summary-level results for analyses and figures
-├── reference/     # Phenotype mappings and other reference files
-├── web-tool/      # Source code for the Cross-Trait PRS Ranking Browser
+├── analysis/        # Analysis and figure-generation scripts
+├── prs_ranking/     # Cross-trait PRS ranking files
+├── result/          # Summary-level results for analyses and figures
+├── reference_data/  # Reference files
+├── web-tool/        # Source code for the cross-trait PRS web-tool
 ├── README.md
 └── LICENSE
 ```
@@ -56,7 +57,7 @@ As part of this study, we generated a comprehensive **cross-trait PRS ranking da
 
 The database can be downloaded from the **GitHub Releases** section of this repository:
 
-**[Download the Cross-Trait PRS Ranking Database](URL_TO_GITHUB_RELEASE)**
+[**Download the Cross-Trait PRS Ranking Database**](https://github.com/terryjiyao/CrosstraitPRS_Ensemble/releases/tag/v0.2-alpha)
 
 The database contains the following fields:
 

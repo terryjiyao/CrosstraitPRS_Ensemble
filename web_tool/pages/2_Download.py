@@ -57,7 +57,7 @@ st.subheader("Download complete database")
 
 st.markdown(
     """
-[**Download Cross-disease PRS Ranking Database (Apache Parquet)**](https://github.com/terryjiyao/CrosstraitPRS_Ensemble/releases/download/v0.1-alpha/prs_cross_trait_ranking.parquet)
+[**Download Cross-disease PRS Ranking Database (Apache Parquet)**](https://github.com/terryjiyao/CrosstraitPRS_Ensemble/releases/tag/v0.2-alpha)
 """
 )
 
